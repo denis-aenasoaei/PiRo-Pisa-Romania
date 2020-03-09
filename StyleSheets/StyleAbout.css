@@ -1,7 +1,6 @@
 ﻿body {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 5% 10% 80% 5%;
 }
 
     body > * {
