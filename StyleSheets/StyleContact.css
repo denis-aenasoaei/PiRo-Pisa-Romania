@@ -1,5 +1,7 @@
 ﻿main {
     border: 1px solid black;
+    margin-right: auto;
+    margin-left: auto;
     display:grid;
 }
 

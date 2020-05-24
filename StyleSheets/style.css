@@ -1,76 +1,97 @@
 body {
-    display: grid;
-    grid-template-columns:100%;
-    grid-template-rows:5% 10% 80% 5%;
+    display: block;
+    width:100%;
+    padding:0;
+    margin:0;
 }
 body > * {
-    border: 1px solid black;
+    width:1200px;
+}
+@media (min-width: 1200px) {
+    header .header-area {
+        width: 1170px;
+    }
+    nav .nav-sticky{
+        width:1170px;
+    }
+    header .top_banner img{
+        width:1170px;
+    }
+    main{
+        width:1170px;
+    }
+    footer{
+        width: 1170px;
+    }
+}
+header{
+    grid-row:1;
+    width:100%;
+    padding:0;
+    margin:0;
+    display: grid;
+}
+header .header-area {
+    grid-row: 1;
+    padding-right:15px;
+    padding-left:15px;
+    margin-left:auto;
+    margin-right:auto;
+    grid-template-columns: 50% 50%;
+}
+.header-logo{
+    grid-column: 1;
+    float:left;
+}
+header .header-social{
+    grid-column:2;
+    float:right;
+    font-size: 35px;
+    margin:0;
+    padding:0;
+
 }
 .header-social a{
     text-decoration: none;
 }
-header{
-    grid-row:1;
+#socials{
+    list-style: none;
+    margin: 0;
 }
-header .header-area {
-    display: grid;
-    grid-template-columns: repeat(10,10%);
+#socials li{
+    float:left;
+    padding: 24px 10px 10px;
 }
-header .header-contact{
-    grid-column:1/span 3;
+#socials a{
+    color: #50afc9;
 }
-header .header-contact ul{
-    list-style-type: none;
-}
-header .header-contact li:first-child:before {
-    content: "\f095"; /* FontAwesome Unicode */
-    font-family: FontAwesome;
-}
-header .header-contact li:nth-child(2):before {
-    content: "\f0e0"; /* FontAwesome Unicode */
-    font-family: FontAwesome;
-}
-header .header-contact ul{
-    display:grid;
-    grid-template-columns:50% 50%;
-}
-header .header-social{
-    grid-column:10;
-    font-size: 25px;
-    padding:10px 0 0 30px;
-
+header .top_banner{
+    grid-row:2;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:20px;
+    margin-bottom: 10px;
 }
 nav{
     padding: 0px 80px;
-    grid-row:2;
-
+    grid-row:3;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: 10px;
 }
 nav .nav-sticky{
     display: grid;
-    background-color: #3CC78F;
+    background-color: #50afc9;
     margin:0;
     padding:0;
     height:100%;
     border-radius:20px;
     grid-template-columns:20% 80%;
 }
-@media only screen and (max-width: 1100px) {
-    nav .nav-sticky {
-
-    grid-template-columns:30% 70%;
-    }
-}
-nav .nav-logo {
-    padding-left:5%;
-    grid-column:1;
-}
-.logo_img{
-    padding-left:40px;
-    padding-top:5px;
-}
 nav .nav-menu{
     grid-column:2;
-
+    padding-top: 5px;
+    padding-bottom: 10px;
 }
 nav .nav-menu #navigation{
     display:grid;
@@ -85,28 +106,32 @@ nav .nav-menu #navigation a:first-child{
 }
 nav .nav-menu #navigation a{
     text-decoration: none;
-    color:white;
+    color:rgb(230,230,230);
+    font-size:18px;
+    font-family: Arial, Helvetica, sans-serif;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
     -moz-user-select: none; /* Old versions of Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently*/
 }
 nav .nav-menu #navigation a:hover{
-    background-color: #88ddbb;
-    box-shadow:3px 3px 2px gray;
+    background-color: #3696af;
+
+    color:rgb(240,240,240);
+    box-shadow:3px 3px 2px #a6a6a6;
     transition:0.3s;
 }
 nav .nav-menu #navigation a:active{
-    background-color: #34b27f;
+    background-color: #2a7488;
+    color:white;
     box-shadow:1px 1px gray;
 }
 nav .nav-menu #navigation a{
     transition:0.3s;
     text-align: center;
-    background-color:#61d1a4;
-    box-shadow:5px 5px 3px gray;
+    background-color:#50afc9;
+    box-shadow:5px 5px 3px #d9d9d9;
     padding:20px 20px 20px 20px;
     border:1px solid gray;
     margin-left: 10px;
@@ -114,4 +139,9 @@ nav .nav-menu #navigation a{
 }
 footer{
     grid-row:4;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#50afc9;
 }
