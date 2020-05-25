@@ -1,8 +1,10 @@
 ﻿main {
-    border: 1px solid black;
+    border: 1px solid #f49600;
+    border-radius: 5px;
     margin-right: auto;
     margin-left: auto;
-    display:grid;
+    display: grid;
+    
 }
 
 input[type=text], select, textarea {
@@ -16,7 +18,7 @@ input[type=text], select, textarea {
 }
 
 input[type=submit] {
-    background-color: #4CAF50;
+    background-color:cornflowerblue;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -24,17 +26,19 @@ input[type=submit] {
 }
 
     input[type=submit]:hover {
-        background-color: #45a049;
+        background-color: #2a7488;
     }
 
 .head {
     text-align:center;
+    font-size:1em;
+    color:azure;
 }
 .container {
     border-radius: 5px;
-    background-color: #f2f2f2;
+    background-color: #50afc9;
     padding: 10px;
-    display:grid;
+    display: grid;
 }
 .row {
     display:grid;
@@ -44,9 +48,11 @@ input[type=submit] {
     margin-top: 6px;
     padding: 20px;
 }
-.col1{
-    grid-column:2;
-    grid-row:1;
+.col1 {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 1em;
+    color: azure;
 }
 .col2{
     grid-column:1;
