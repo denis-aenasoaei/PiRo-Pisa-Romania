@@ -37,6 +37,11 @@ if (empty($subject)) {
   echo "City :$selectOption<br> ";
   echo "Message: $subject <br>";
 }
+else
+{
+    header("Location:../Contact.php");
+    exit();
+}
 
 }
 ?>
