@@ -1,6 +1,4 @@
-﻿<?php require '../Controller/formular.php'?>
-<!DOCTYPE html>
-<html lang="en-US">
+﻿<html lang="en-US">
 <head>
     <link rel="stylesheet" type="text/css" href="StyleSheets/style.css">
     <link rel="stylesheet" type="text/css" href="StyleSheets/StyleContact.css">
@@ -126,7 +124,7 @@
                         </select>
                         <label for="subject">Subject</label>
                         <textarea id="subject" name="subject" placeholder="Write something.." ></textarea>
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Submit" formaction="Controller/formular.php">
                     </form>
                 </div>
                 <div class="col2">
