@@ -16,6 +16,13 @@ input[type=text], select, textarea {
     margin-bottom: 16px;
     resize: vertical;
 }
+img {
+    width: 50%;
+}
+
+textarea {
+    height: 170px;
+}
 
 input[type=submit] {
     background-color:cornflowerblue;
