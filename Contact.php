@@ -1,4 +1,5 @@
-﻿<html lang="en-US">
+﻿<!Doctype html>
+<html lang="en-US">
 <head>
     <link rel="stylesheet" type="text/css" href="StyleSheets/style.css">
     <link rel="stylesheet" type="text/css" href="StyleSheets/StyleContact.css">
@@ -79,47 +80,47 @@
                 <div class="col1">
                     <form action="../formular.php" method="post">
                         <label for="fname">First Name</label>
-                        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                        <input type="text" id="fname" name="firstname"  placeholder="Your name..">
                         <label for="lname">Last Name</label>
                         <input type="text" id="lname" name="lastname" placeholder="Your last name..">
                         <label for="city">City</label>
                         <select id="city" name="city">
-                            <option value="alba">Alba Iulia</option>
-                            <option value="arad">Arad</option>
-                            <option value="bacau">Bacau</option>
-                            <option value="bistrita">Bistrita</option>
-                            <option value="botosani">Botosani</option>
-                            <option value="braila">Braila</option>
-                            <option value="brasov">Brasov</option>
-                            <option value="bucuresti">Bucuresti</option>
-                            <option value="buzau">Buzau</option>
-                            <option value="calarasi">Calarasi</option>
-                            <option value="cluj">Cluj-Napoca</option>
-                            <option value="constanta">Constanta</option>
-                            <option value="craiova">Craiova</option>
-                            <option value="focsani">Focsani</option>
-                            <option value="galati">Galati</option>
-                            <option value="giurgiu">Giurgiu</option>
-                            <option value="gorj">Gorj</option>
-                            <option value="hunedoara">Hunedoara</option>
-                            <option value="ialomita">Ialomita</option>
-                            <option value="iasi">Iasi</option>
-                            <option value="harghita">Miercurea Ciuc</option>
-                            <option value="oradea">Oradea</option>
-                            <option value="neamt">Piatra Neamt</option>
-                            <option value="pitesti">Pitesti</option>
-                            <option value="ploiesti">Ploiesti</option>
-                            <option value="resita">Resita</option>
-                            <option value="satumare">Satu Mare</option>
-                            <option value="sibiu">Sibiu</option>
-                            <option value="slatina">Slatina</option>
-                            <option value="slobozia">Slobozia</option>
-                            <option value="suceava">Suceava</option>
-                            <option value="mures">Targu-Mures</option>
-                            <option value="timisoara">Timisoara</option>
-                            <option value="tulcea">Tulcea</option>
-                            <option value="vaslui">Vaslui</option>
-                            <option value="zalau">Zalau</option>
+                            <option value="Alba Iulia">Alba Iulia</option>
+                            <option value="Arad">Arad</option>
+                            <option value="Bacau">Bacau</option>
+                            <option value="Bistrita">Bistrita</option>
+                            <option value="Botosani">Botosani</option>
+                            <option value="Braila">Braila</option>
+                            <option value="Brasov">Brasov</option>
+                            <option value="Bucuresti">Bucuresti</option>
+                            <option value="Buzau">Buzau</option>
+                            <option value="Calarasi">Calarasi</option>
+                            <option value="Cluj">Cluj-Napoca</option>
+                            <option value="Constanta">Constanta</option>
+                            <option value="Craiova">Craiova</option>
+                            <option value="Focsani">Focsani</option>
+                            <option value="Galati">Galati</option>
+                            <option value="Giurgiu">Giurgiu</option>
+                            <option value="Gorj">Gorj</option>
+                            <option value="Hunedoara">Hunedoara</option>
+                            <option value="Ialomita">Ialomita</option>
+                            <option value="Iasi">Iasi</option>
+                            <option value="Miercurea Ciuc">Miercurea Ciuc</option>
+                            <option value="Oradea">Oradea</option>
+                            <option value="Piatra Neamt">Piatra Neamt</option>
+                            <option value="Pitesti">Pitesti</option>
+                            <option value="Ploiesti">Ploiesti</option>
+                            <option value="Resita">Resita</option>
+                            <option value="Satu Mare">Satu Mare</option>
+                            <option value="Sibiu">Sibiu</option>
+                            <option value="Slatina">Slatina</option>
+                            <option value="Slobozia">Slobozia</option>
+                            <option value="Suceava">Suceava</option>
+                            <option value="Targu-Mures">Targu-Mures</option>
+                            <option value="Timisoara">Timisoara</option>
+                            <option value="Tulcea">Tulcea</option>
+                            <option value="Vaslui">Vaslui</option>
+                            <option value="Zalau">Zalau</option>
 
                         </select>
                         <label for="subject">Subject</label>
