@@ -1,4 +1,5 @@
 ﻿main {
+    width:87%;
     border: 1px solid #f49600;
     border-radius: 5px;
     margin-right: auto;
@@ -74,10 +75,9 @@ input[type=submit] {
 }
 
 /* Responsive layout */
-@media screen and (max-width: 600px) {
-    .column, input[type=submit] {
-        width: 100%;
-        margin-top: 0;
+@media (min-width: 1200px) {
+   .col1{
+        width:87%;
     }
 }
 
