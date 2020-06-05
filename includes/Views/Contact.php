@@ -1,4 +1,54 @@
-﻿<html lang="en-US">
+﻿<?php
+
+//am lasat aici pentru a nu pastra acel formular.php (nu ar mai functiona oricum dupa ce am facut toate modificarile astea)
+//Poti sterge oricand crezi ca nu mai ai nevoie de codul asta :) 
+if ($_SERVER["REQUEST_METHOD"] == "POST") 
+{ 
+$fname = $_POST["firstname"];
+$lname = $_POST["lastname"];
+$selectOption = $_POST["city"];
+$subject = $_POST["subject"]; 
+$errors = array();
+    if (empty($fname)) {
+        $errors[]="Firtsname is required";
+      } else {
+          // check if name only contains letters and whitespace
+        if (!preg_match("/^[a-zA-Z ]*$/",$fname)) {
+          $errors[]= "Only letters and white space allowed";
+        }
+    }
+    
+      if (empty($lname)) {
+        $errors[]="Lastname is required";
+      } else {
+      
+        // check if name only contains letters and whitespace
+        if (!preg_match("/^[a-zA-Z ]*$/",$lname)) {
+          $errors[]= "Only letters and white space allowed";
+        }
+      }    
+
+if (empty($subject)) {
+    $subject = "";
+  } else {
+    $subject = $_POST["subject"];
+  }
+  
+  if ( count( $errors ) == 0 ) {
+  echo "Firstname :$fname<br>";
+  echo "Lastname :$lname<br>";
+  echo "City :$selectOption<br> ";
+  echo "Message: $subject <br>";
+    }
+else
+{
+    header("Location: includes/Views/Contact.php");
+    exit();
+}
+
+}
+?>
+<html lang="en-US">
 <head>
     <link rel="stylesheet" type="text/css" href="StyleSheets/style.css">
     <link rel="stylesheet" type="text/css" href="StyleSheets/StyleContact.css">
@@ -55,13 +105,13 @@
         <div class="nav-sticky">
             <div class="nav-menu">
                 <ul id="navigation">
-                    <a href="index.html"><li>
+                    <a href="index.php"><li>
                         Home
                     </li></a>
-                    <a href="#"><li>
+                    <a href="Results.php"><li>
                         Results
                     </li></a>
-                    <a href="#"><li>
+                    <a href="Contact.php"><li>
                         Contact
                     </li></a>
                 </ul>
@@ -77,7 +127,7 @@
             </div>
             <div class="row">
                 <div class="col1">
-                    <form action="../formular.php" method="post">
+                    <form action="Contact.php" method="POST">
                         <label for="fname">First Name</label>
                         <input type="text" id="fname" name="firstname" placeholder="Your name..">
                         <label for="lname">Last Name</label>
@@ -124,8 +174,10 @@
                         </select>
                         <label for="subject">Subject</label>
                         <textarea id="subject" name="subject" placeholder="Write something.." ></textarea>
-                        <input type="submit" value="Submit" formaction="Controller/formular.php">
+                        <input type="submit" value="Submit">
                     </form>
+                    
+                    <!formaction="includes/Controller/ContactUsController.php" >
                 </div>
                 <div class="col2">
                     <img src="Images/Home/download.jpg">

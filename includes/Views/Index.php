@@ -55,10 +55,10 @@
                 <div class="nav-sticky">
                     <div class="nav-menu">
                         <ul id="navigation">
-                            <a href="#"><li>
+                            <a href="Index.php"><li>
                                 Home
                             </li></a>
-                            <a href="#"><li>
+                            <a href="Results.php"><li>
                                 Results
                             </li></a>
                             <a href="Contact.php"><li>

@@ -10,4 +10,9 @@ echo $selectOption." ";
 $subject = $_POST["subject"];
 echo  $subject." ";
 }
+class ContactUsController extends Controller{
+
+}
+ContactUsController::createView("Contact.php")
+
 ?>
