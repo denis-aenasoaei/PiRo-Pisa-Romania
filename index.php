@@ -20,4 +20,24 @@ function __autoload($class){
     }
 }
 Route::run($_GET['url']);
+
+$currController = Route::getUsedRoute($_GET['url']);
+$method = $_SERVER['REQUEST_METHOD'];
+if(strpos($currController,"index.php") !== false )
+{
+    $controller = new IndexController();
+    //parse request
+}
+elseif(strpos($currController,"Results.php") !== false)
+{
+    $controller = new ResultsController();
+    $controller->getAllRomaniaResponses();
+
+}
+elseif(strpos($currController,"ContactUs.php") !== false)
+{
+    $controller = new ContactUsController();
+}
+
+
 ?>

@@ -22,4 +22,16 @@ class Route
             self::$functions[array_search("index.php", self::$validRoutes)]->__invoke();
         }
     }
+    
+    public static function getUsedRoute($route)
+    { 
+        if(in_array($route, self::$validRoutes))
+        {
+            return self::$validRoutes[array_search($route, self::$validRoutes)];
+        }
+        else
+        {
+            return self::$validRoutes[array_search("index.php", self::$validRoutes)];
+        }
+    }
 }

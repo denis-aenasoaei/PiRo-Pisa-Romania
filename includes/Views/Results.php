@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.bundle.min.js"></script>
     <link rel="stylesheet" type="text/css" href="StyleSheets/style.css">
     <link rel="stylesheet" type="text/css" href="StyleSheets/StyleHome.css">
     <link rel="icon" href="Images/Home/oecd_logo.png">
@@ -69,6 +70,5 @@
             </nav>
         </header>
 
-       < 
     </body>
 </html>
