@@ -1,14 +1,14 @@
 <?php
 
-Route::set("index.php", function(){
+Route::add("index.php", function(){
     IndexController::createView('Index.php');
 });
 
-Route::set("Results.php", function(){
+Route::add("Results.php", function(){
     ResultsController::createView('Results.php');
 });
 
-Route::set("Contact.php", function(){
+Route::add("Contact.php", function(){
     ContactUsController::createView('Contact.php');
 });
 
