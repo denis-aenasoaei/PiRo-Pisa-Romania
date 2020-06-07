@@ -26,7 +26,6 @@ class ResultsModel
     public function getArrayBasedOnFilters($desiredMean, $filters, $countries=[])
     {
         try{
-            print_r($countries);
             $outputCountriesData = [];
             if(strtolower($desiredMean) === "math")
             {

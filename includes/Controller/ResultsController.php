@@ -36,10 +36,8 @@ class ResultsController extends Controller
             $filters['wealth_range'] = strtoupper($_GET['wealth_range']);
         }
         if (isset($_GET['mean_type']))
-        {  
-             $filters['mean_type']=(int)$_GET['mean_type'];
-        }
-            /*$means = $_GET['mean_type'];
+        {
+            $means = $_GET['mean_type'];
             switch ($means) {
                 case 'math':
                     $data = $this->model->getArrayBasedOnFilters("math", $filters, $countries);
@@ -50,8 +48,8 @@ class ResultsController extends Controller
                 case 'read':
                     $data = $this->model->getArrayBasedOnFilters("read", $filters, $countries);
                     break;
-            }*/
-        
+            }
+        }
 
         if(isset($_GET['age']))
         {
@@ -95,6 +93,35 @@ class ResultsController extends Controller
                 $data = $this->model->getArrayBasedOnFilters("All", NULL, $countries);
             }
         }
+        else
+        {
+            if (isset($_GET['mean_type']))
+            {
+                $type = $_GET['mean_type'];
+                switch ($type) {
+                    case 'math':
+                        $data = $this->model->getArrayBasedOnFilters("math", NULL, $countries);
+                        break;
+                    case 'science':
+                        $data = $this->model->getArrayBasedOnFilters("science", NULL, $countries);
+                        break;
+                    case 'read':
+                        $data = $this->model->getArrayBasedOnFilters("read", NULL, $countries);
+                        break;
+                    default:
+                        $data = $this->model->getArrayBasedOnFilters("All", NULL, $countries);
+                        break;
+                }
+            }
+            else
+            {
+                $data = $this->model->getArrayBasedOnFilters("All", NULL, $countries);
+            }
+        }
+        $jsonData = json_encode($data, JSON_FORCE_OBJECT);
+        echo $jsonData;
+        }
     }
-}   
+
+
 ?>
