@@ -31,7 +31,7 @@ if(strpos($currController,"index.php") !== false )
 elseif(strpos($currController,"Results.php") !== false)
 {
     $controller = new ResultsController();
-    $controller->getAllRomaniaResponses();
+    $controller->getAllMathRomaniaScores();
 
 }
 elseif(strpos($currController,"ContactUs.php") !== false)

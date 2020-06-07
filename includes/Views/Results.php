@@ -71,4 +71,6 @@
         </header>
 
     </body>
+    <script src="Scripts/resultsScript.js"></script>
+    
 </html>

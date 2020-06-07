@@ -16,6 +16,13 @@ class ResultsController extends Controller
         print_r($data);
         echo '<pre>';
     }
+    public function getAllMathRomaniaScores()
+    {
+        $data = $this->model->getAllMathRomaniaScores();
+        echo '<pre>';
+        print_r($data);
+        echo '<pre>';
+    }
 }
 
 ?>
