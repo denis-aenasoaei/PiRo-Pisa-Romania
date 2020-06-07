@@ -12,7 +12,7 @@ class ResultsController extends Controller
     public function getAllRomaniaResponses()
     {
         $data = $this->model->getAllRomaniaRecords();
-        echo '<pre>';
+        echo '<pre>';ss
         print_r($data);
         echo '<pre>';
     }
@@ -25,7 +25,8 @@ class ResultsController extends Controller
     }
 
     public function getFiltered()
-    {    $countries = [];
+    {    
+        $countries = [];
         $filters = [];
         $filNames = ["gender", "wealth_range", "age", "school_grade", "mean_type", "url"];
         if(isset($_GET['gender']))
@@ -61,7 +62,6 @@ class ResultsController extends Controller
         {
             $filters['school_grade'] = (int)$_GET['school_grades'];
         }
-        //$countries = [];
         
         foreach($_GET as $k => $v)
         {
@@ -70,30 +70,31 @@ class ResultsController extends Controller
                 array_push($countries, $_GET[$k]);
             }
         }
-        if(empty($filters))
+        if(!empty($filters))
         {
-            $data = $this->model->getArrayBasedOnFilters("All", NULL, $countries);
-            
-        }
+            if (isset($_GET['mean_type']))
+            {
+                $type = $_GET['mean_type'];
+                switch ($type) {
+                    case 'math':
+                        $data = $this->model->getArrayBasedOnFilters("math", $filters, $countries);
+                        break;
+                    case 'science':
+                        $data = $this->model->getArrayBasedOnFilters("science", $filters, $countries);
+                        break;
+                    case 'read':
+                        $data = $this->model->getArrayBasedOnFilters("read", $filters, $countries);
+                        break;
+                    default:
+                        $data = $this->model->getArrayBasedOnFilters("All", $filters, $countries);
+                        break;
+                }
+            }
             else
             {
-                $data = $this->model->getArrayBasedOnFilters("All", $filters, $countries);
+                $data = $this->model->getArrayBasedOnFilters("All", NULL, $countries);
             }
-            $jsonData = json_encode($data, JSON_FORCE_OBJECT);
-            echo $jsonData;
-        $means = $_GET['mean_type'];
-        switch ($means) {
-            case 'math':
-                $data = $this->model->getArrayBasedOnFilters("math", $filters, $countries);
-                break;
-            case 'science':
-                $data = $this->model->getArrayBasedOnFilters("science", $filters, $countries);
-                break;
-            case 'read':
-                $data = $this->model->getArrayBasedOnFilters("read", $filters, $countries);
-                break;
         }
-    }
     
 
 ?>
