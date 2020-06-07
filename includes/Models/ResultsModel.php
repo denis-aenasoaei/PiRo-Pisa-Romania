@@ -37,7 +37,7 @@ class ResultsModel
             }
             elseif(strtolower($desiredMean) === "read")
             {
-
+                
             }
             else
             {
@@ -75,7 +75,6 @@ class ResultsModel
                                 }
                                 $i += 1;
                             }
-                            echo 'sdas';
                             $request->execute();
                             array_push($outputCountriesData, $request->fetch(\PDO::FETCH_ASSOC));
                         }

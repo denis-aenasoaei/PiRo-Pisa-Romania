@@ -44,7 +44,7 @@ elseif(strpos($currController,"Results.php") !== false)
 
 
 }
-elseif(strpos($currController,"ContactUs.php") !== false)
+elseif(strpos($currController,"Contact.php") !== false)
 {
     
     $controller = new ContactUsController();
