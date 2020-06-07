@@ -12,7 +12,7 @@ class ResultsController extends Controller
     public function getAllRomaniaResponses()
     {
         $data = $this->model->getAllRomaniaRecords();
-        echo '<pre>';ss
+        echo '<pre>';
         print_r($data);
         echo '<pre>';
     }
@@ -95,6 +95,6 @@ class ResultsController extends Controller
                 $data = $this->model->getArrayBasedOnFilters("All", NULL, $countries);
             }
         }
-    
-
+    }
+}   
 ?>
