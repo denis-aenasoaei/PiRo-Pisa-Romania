@@ -26,9 +26,11 @@ class ResultsModel
     public function getArrayBasedOnFilters($desiredMean, $filters, $countries=[])
     {
         try{
+            print_r($countries);
             $outputCountriesData = [];
             if(strtolower($desiredMean) === "math")
             {
+                
                 foreach($countries as $country)
                 {
 
@@ -71,6 +73,7 @@ class ResultsModel
                             $sql = "SELECT nvl(AVG(MATH_GRADE), 0) as 'MEAN', 'Romania' as 'Country' FROM `ROMANIA_DATA`";
                             $request = $this->connection->prepare($sql);
                             $request->execute();
+                            
                             array_push($outputCountriesData, $request->fetch(\PDO::FETCH_ASSOC));
                             
                         }
@@ -78,7 +81,6 @@ class ResultsModel
                     else
                     {
                         $sql = "SELECT nvl(MATH_MEAN, 0) as 'MEAN', Country as 'Country' FROM `COUNTRY_SCORES` where Country =? ";
-
                         $request = $this->connection->prepare($sql);
                         $request->bindParam(1, $country);
                         $request->execute();
