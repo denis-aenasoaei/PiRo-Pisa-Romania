@@ -2,6 +2,7 @@
 <html lang="en-US">
 <head>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.bundle.min.js"></script>
+    <script src="Scripts/resultsScript.js"></script>
     <link rel="stylesheet" type="text/css" href="StyleSheets/style.css">
     <link rel="stylesheet" type="text/css" href="StyleSheets/StyleHome.css">
     <link rel="icon" href="Images/Home/oecd_logo.png">
@@ -69,8 +70,17 @@
                 </div>
             </nav>
         </header>
-
+        <form id="inputForm">
+            <input type="text" id="c1" name="c1">
+            <input type="text" id="c2" name="c2">
+            
+        </form>
+        <p id="temp"></p>
+        <button id="testButton"> Get Chart </button>
+        
+        <div id="chartContainer" height="400px" width = "400px">
+            <canvas id="myChart"></canvas>
+        </div>
     </body>
-    <script src="Scripts/resultsScript.js"></script>
     
 </html>

@@ -19,24 +19,36 @@ function __autoload($class){
     require_once BASE_DIR . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'Models' . DIRECTORY_SEPARATOR . $class . '.php';
     }
 }
-Route::run($_GET['url']);
 
 $currController = Route::getUsedRoute($_GET['url']);
 $method = $_SERVER['REQUEST_METHOD'];
 if(strpos($currController,"index.php") !== false )
 {
     $controller = new IndexController();
+    Route::run($_GET['url']);
     //parse request
 }
 elseif(strpos($currController,"Results.php") !== false)
 {
     $controller = new ResultsController();
-    $controller->getAllMathRomaniaScores();
+    if(count($_GET) == 1)
+    {
+        if(isset($_GET['url']))
+            Route::run($_GET['url']);
+    }
+    else
+    {
+        $controller->getFiltered();
+        
+    }
+
 
 }
 elseif(strpos($currController,"ContactUs.php") !== false)
 {
+    
     $controller = new ContactUsController();
+    Route::run($_GET['url']);
 }
 
 
