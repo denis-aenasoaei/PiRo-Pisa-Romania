@@ -35,7 +35,7 @@ class ResultsController extends Controller
         {
             $filters['wealth_range'] = strtoupper($_GET['wealth_range']);
         }
-        if (isset($_GET['mean_type']))
+       /* if (isset($_GET['mean_type']))
         {
             $means = $_GET['mean_type'];
             switch ($means) {
@@ -49,7 +49,7 @@ class ResultsController extends Controller
                     $data = $this->model->getArrayBasedOnFilters("read", $filters, $countries);
                     break;
             }
-        }
+        }*/
 
         if(isset($_GET['age']))
         {
