@@ -77,6 +77,8 @@
                 <div class="filter-container">
                     <article class="countries-container">
                         <p id="country-label" class="label"> Countries </p>
+                        <button type="button" class="filter-button" id="btn-add-country"> Add a country </button>
+                        <button type="button" class="filter-button" id="btn-remove-country"> Remove a country </button> 
                         <form id="country-choice">
                             <select id="c1" name="c1">
                                 <option value="Albania"> Albania </option>
@@ -159,9 +161,7 @@
                                 <option value="Uruguay"> Uruguay </option>      
                                 <option value="Viet Nam"> Viet Nam </option>  
                             </select>
-                        </form>                 
-                        <button type="button" class="filter-button" id="btn-add-country"> Add a country </button>
-                        <button type="button" class="filter-button" id="btn-remove-country"> Remove a country </button>  
+                        </form>   
                     </article>
                     <article class="age-container">
                         <p id="age-label" class="label"> Age </p>
@@ -202,6 +202,16 @@
                             </select>
                         </form>
                     </article>
+                    <article class="indicator-container">
+                    <p id="indicator-label" class="label"> PISA Indicator </p>
+                        <form id="indicator-choice">
+                            <select id="indicator-combo-box" name="indicator-combo-box">
+                                <option value="All"> All </option>
+                                <option value="reading"> Reading </option>
+                                <option value="math"> Math </option>
+                                <option value="science"> Science </option>
+                            </select>
+                        </form>
                 </div>
                 
                 <div class="chart-area">

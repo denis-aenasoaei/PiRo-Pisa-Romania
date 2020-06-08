@@ -1,8 +1,9 @@
 .layout-container{
     display: flex;
-    height:500px;
     margin:auto;
     width:85%;
+    overflow: auto;
+    size: auto;
 }
 
 .filter-container{
