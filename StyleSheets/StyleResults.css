@@ -1,0 +1,43 @@
+.layout-container{
+    display: flex;
+    height:500px;
+    margin:auto;
+    width:85%;
+}
+
+.filter-container{
+    text-align: center;
+    border: 1px solid grey;
+    align-self: stretch;
+    flex:15%;
+    max-width: 15%;
+}
+
+.chart-area{
+    align-self: stretch;
+    height:70%;
+    flex:85%;
+    max-width: 85%;
+}
+
+@media only screen and (max-width: 800px)
+{
+    .layout-container{
+        flex-wrap: wrap;
+    }
+    .filter-container{
+        flex:100%;
+        max-width: 100%;
+    }
+
+    
+    .chart-area{
+        height:100%;
+        flex:100%;
+        max-width: 100%;
+    }
+
+    .top_banner{
+        visibility: hidden;
+    }
+}
