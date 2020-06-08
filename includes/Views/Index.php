@@ -81,36 +81,38 @@
             </div>
             <div class="second">
                 <img src="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/Picture_front-page.png">
-                <h2>
-                    PISA 2018
-                </h2>
-                <p>
-                    LATEST RESULTS: <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Docs/are-students-smart-about-money.pdf">Are Students Smart about Money?</a>
-                </p>
-                <ul>
-                    <li>
-                        <a href="#">PISA 2018 results</a>
-                    </li>
-                    <li>
-                        <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Docs/PISA%202018%20Insights%20and%20Interpretations%20FINAL%20PDF.pdf">PISA 2018: Insights and Interpretations</a>
-                    </li>
-                    <li>
-                        Student performance snapshot:<br>
-                        <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_ENGLISH.png">English</a>,
-                        <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_FRENCH.png">French</a>,
-                        <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_CHINESE.png">Chinese</a>,
-                        <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_GERMAN.png">German</a>,
-                        <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_ITALIAN.png">Italian</a>,
-                        <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_JAPANESE.png">Japanese</a>,
-                        <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_PORTUGUESE.png">Portuguese</a>, and
-                        <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_SPANISH.png">Spanish</a>
-                    </li>
-                </ul>
+                <div>
+                    <h2>
+                        PISA 2018
+                    </h2>
+                    <p>
+                        LATEST RESULTS: <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Docs/are-students-smart-about-money.pdf">Are Students Smart about Money?</a>
+                    </p>
+                    <ul>
+                        <li>
+                            <a href="#">PISA 2018 results</a>
+                        </li>
+                        <li>
+                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Docs/PISA%202018%20Insights%20and%20Interpretations%20FINAL%20PDF.pdf">PISA 2018: Insights and Interpretations</a>
+                        </li>
+                        <li>
+                            Student performance snapshot:<br>
+                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_ENGLISH.png">English</a>,
+                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_FRENCH.png">French</a>,
+                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_CHINESE.png">Chinese</a>,
+                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_GERMAN.png">German</a>,
+                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_ITALIAN.png">Italian</a>,
+                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_JAPANESE.png">Japanese</a>,
+                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_PORTUGUESE.png">Portuguese</a>, and
+                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_SPANISH.png">Spanish</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="third_1">
                 <h2>PISA 2018: How are students doing?</h2>
                 <hr>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/btPwIxLiPV8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe height="315" src="https://www.youtube.com/embed/btPwIxLiPV8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="third_2">
                 <h2>Coming up</h2>
@@ -154,7 +156,7 @@
             <div class="fourth_2">
                 <h2>What is PISA?</h2>
                 <hr>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/i4RGqzaNEtg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe height="315" src="https://www.youtube.com/embed/i4RGqzaNEtg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="fifth">
                 <div class="fifth_1">
