@@ -1,5 +1,4 @@
 RewriteEngine On
 RewriteBase /PiRo-Pisa-Romania
-
 RewriteCond %{REQUEST_URI} !(\.png|\.jpg|\.jpeg|\.bmp|\.css|\.js|\.gif|\.pdf|\.txt|\.xml|\.csv)$ [NC]
 RewriteRule ^([^/]+)/? index.php?url=$1 [L,QSA]

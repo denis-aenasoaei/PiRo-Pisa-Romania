@@ -48,7 +48,15 @@ elseif(strpos($currController,"Contact.php") !== false)
 {
     
     $controller = new ContactUsController();
-    Route::run($_GET['url']);
+    if($method === "POST")
+    {
+        //insert comentariu in BD
+    }
+    else
+    {
+        Route::run($_GET['url']);
+    }
+    
 }
 
 
