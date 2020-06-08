@@ -14,7 +14,7 @@ body > * {
     nav .nav-sticky{
         width:1170px;
     }
-    header .top_banner img{
+    header .top_banner {
         width:1170px;
     }
     main{
@@ -22,6 +22,45 @@ body > * {
     }
     footer{
         width: 1170px;
+    }
+}
+@media (min-width: 800px) and (max-width:1200px) {
+    header .header-area {
+        width: 770px;
+    }
+    nav .nav-sticky{
+        width:770px;
+    }
+    header .top_banner {
+        width:770px;
+    }
+    main{
+        width:770px;
+    }
+    footer{
+        width: 770px;
+    }
+}
+@media (max-width: 800px){
+    header .header-area {
+        max-width: 770px;
+        width: 100%;
+    }
+    nav .nav-sticky{
+        width:770px;
+        width: 100%;
+    }
+    header .top_banner {
+        width:770px;
+        width: 100%;
+    }
+    main{
+        width:770px;
+        width: 100%;
+    }
+    footer{
+        width: 770px;
+        width: 100%;
     }
 }
 header{
@@ -33,8 +72,6 @@ header{
 }
 header .header-area {
     grid-row: 1;
-    padding-right:15px;
-    padding-left:15px;
     margin-left:auto;
     margin-right:auto;
     grid-template-columns: 50% 50%;
@@ -72,8 +109,10 @@ header .top_banner{
     margin-top:20px;
     margin-bottom: 10px;
 }
+header .top_banner img{
+    width:100%;
+}
 nav{
-    padding: 0px 80px;
     grid-row:3;
     margin-left:auto;
     margin-right:auto;

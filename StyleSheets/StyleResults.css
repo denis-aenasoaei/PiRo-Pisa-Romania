@@ -1,0 +1,12 @@
+#myChart{
+    width: 100%;
+}
+#exportCSV, #exportPNG, #exportSVG{
+    width:auto;
+    float:right;
+}
+main{
+    grid-row:3;
+    margin-left:auto;
+    margin-right:auto;
+}
