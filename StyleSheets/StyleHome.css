@@ -1,7 +1,6 @@
 main{
     grid-row:3;
     display:grid;
-    grid-template-columns: 50% 50%;
     margin-left:auto;
     margin-right:auto;
 }
@@ -9,11 +8,6 @@ main > *{
     user-select: none;
     border:1px solid black;
     font-family: Arial, Helvetica, sans-serif;
-}
-main .main-slider{
-    grid-column:span 2;
-    display:flex;
-    justify-content:center;
 }
 aside{
     grid-column:1;
@@ -24,12 +18,148 @@ main >div{
     border-radius: 2px;
     border:1px solid #50afc9;
 }
+@media (max-width: 800px){
+    .first{
+        margin-left: 5px;
+        margin-right: 6px;
+    }
+    .second{
+        margin-left: 5px;
+        margin-right: 6px;
+    }
+    .second img{
+        grid-row:1;
+    }
+    .second div{
+        grid-row:2;
+    }
+    .third_1{
+        grid-row:3;
+        margin-left: 5px;
+        margin-right: 6px;
+    }
+    .third_2{
+        grid-row:4;
+        margin-left: 5px;
+        margin-right: 6px;
+    }
+    .fourth_1{
+        grid-row:5;
+        margin-left: 5px;
+        margin-right: 6px;
+    }
+    .fourth_2{
+        grid-row:6;
+        margin-left: 5px;
+        margin-right: 6px;
+    }
+    .fifth{
+        grid-row:7;
+    }
+    .fifth_1{
+        grid-row:1;
+        margin-left:0;
+        margin-left: 5px;
+        margin-right: 6px;
+    }
+    .fifth_2{
+        grid-row:2;
+        margin-left: 5px;
+        margin-right: 6px;
+        margin-top:5px;
+        margin-bottom: 5px;
+    }
+    .fifth_3{
+        grid-row:3;
+        margin-left: 5px;
+        margin-right: 6px;
+        margin-top: 5px;
+    }
+    .fifth_4{
+        grid-row:4;
+        margin-left: 5px;
+        margin-right: 6px;
+    }
+}
+@media (min-width: 800px){
+    .main {
+        grid-template-columns: 50% 50%;
+    }
+    .first{
+        margin-left:auto;
+        margin-right:auto;
+    }
+    .second{
+        grid-template-columns: 60% 40%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .second img{
+        grid-column:1;
+    }
+    .second div{
+        grid-column:2;
+    }
+    .third_1{
+        grid-row:3;
+        grid-column: 1;
+        margin-right: 5px;
+    }
+    .third_2{
+        grid-row:3;
+        grid-column: 2;
+        margin-left:5px;
+        margin-right:0;
+    }
+    .fourth_1{
+        grid-row:4;
+        grid-column: 1;
+        margin-left:0;
+        margin-right:5px;
+    }
+    .fourth_2{
+        grid-row:4;
+        grid-column: 2;
+        margin-left:5px;
+        margin-right:0;
+    }
+    .fifth{
+        grid-row:5;
+        grid-column: 1/3;
+        grid-template-columns: 33% 34% 33%;
+    }
+    .fifth_1{
+        grid-row:1/3;
+        grid-column: 1;
+        margin-left:0;
+        margin-right:5px;
+    }
+    .fifth_2{
+        grid-row:1/3;
+        grid-column: 2;
+        margin-left:5px;
+        margin-right:5px;
+    }
+    .fifth_3{
+        grid-row:1;
+        grid-column: 3;
+        margin-left:5px;
+        margin-right:0;
+        margin-bottom: 5px;
+    }
+    .fifth_4{
+        grid-row:2;
+        grid-column: 3;
+        margin-left:5px;
+        margin-right:0;
+        margin-top: 5px;
+    }
+
+}
 main .first{
     grid-row:1;
     grid-column:1/3;
     border:1px solid #50afc9;
-    margin-left:auto;
-    margin-right:auto;
     padding-left: 15px;
     padding-right: 15px;
     color:#1e5361;
@@ -52,21 +182,16 @@ main .second{
     display: grid;
     grid-row:2;
     grid-column:1/3;
-    grid-template-columns: 60% 40%;
-    width:100%;
-    margin-left:auto;
-    margin-right:auto;
+    width:auto;
     color:#804e00;
     border:1px solid #f49600;
 }
 .second img{
-    grid-column: 1;
     width: 100%;
     margin-left: 0;
     margin-right: 0;
 }
 .second div{
-    grid-column: 2;
     width: 100%;
     margin:7px;
 }
@@ -82,11 +207,7 @@ main .second{
     text-decoration: underline;
 }
 main .third_1{
-    grid-row:3;
-    grid-column:1;
     width:auto;
-    margin-left:0;
-    margin-right: 5px;
     padding-right: 15px;
     padding-left: 15px;
     border:1px solid #f49600;
@@ -103,11 +224,7 @@ main .third_1{
 }
 main .third_2{
     height: 610px; /* this will be deleted */
-    grid-row:3;
-    grid-column: 2;
     width:auto;
-    margin-left:5px;
-    margin-right:0;
     padding-right: 15px;
     padding-left: 15px;
     color:#1e5361;
@@ -133,11 +250,7 @@ main .third_2{
     border-radius: 2px;
 }
 main .fourth_1{
-    grid-row:4;
-    grid-column:1;
     width:auto;
-    margin-left:0;
-    margin-right:5px;
     padding-right: 15px;
     padding-left: 15px;
     color:#de3f53;
@@ -165,11 +278,7 @@ main .fourth_1{
     text-decoration: underline;
 }
 main .fourth_2{
-    grid-row:4;
-    grid-column: 2;
     width: auto;
-    margin-left:5px;
-    margin-right:0;
     padding-bottom: 15px;
     padding-right: 15px;
     padding-left: 15px;
@@ -189,15 +298,12 @@ main .fourth_2{
     border:1px solid #766d65;
 }
 main .fifth{
-    grid-row:5;
-    grid-column: 1/3;
     width:100%;
     margin-left:auto;
     margin-right:auto;
     display: grid;
     border:none;
     color:white;
-    grid-template-columns: 33% 34% 33%;
 }
 .fifth > div{
     padding-left: 15px;
@@ -208,21 +314,13 @@ main .fifth{
     border-radius: 2px;
 }
 main .fifth_1{
-    grid-row:1/3;
-    grid-column: 1;
     width:auto;
-    margin-left:0;
-    margin-right:5px;
     text-align: center;
     line-height: 250%;
     background-color: #3592ab;
     border:1px solid transparent;
 }
 main .fifth_2{
-    grid-row:1/3;
-    grid-column: 2;
-    margin-left:5px;
-    margin-right:5px;
     width: auto;
     background-color: #f49600;
     border:1px solid transparent;
@@ -241,11 +339,6 @@ main .fifth_2{
     text-decoration: underline;
 }
 main .fifth_3{
-    grid-row:1;
-    grid-column: 3;
-    margin-left:5px;
-    margin-right:0;
-    margin-bottom: 5px;
     width:auto;
     line-height: 150%;
     background-color: #de3f53;
@@ -262,11 +355,6 @@ main .fifth_3{
     text-decoration: underline;
 }
 main .fifth_4{
-    grid-row:2;
-    grid-column: 3;
-    margin-left:5px;
-    margin-right:0;
-    margin-top:5px;
     width:auto;
     background-color: #de3f53;
     border:1px solid transparent;

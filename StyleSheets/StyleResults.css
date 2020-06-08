@@ -38,8 +38,4 @@
         flex:100%;
         max-width: 100%;
     }
-
-    .top_banner{
-        visibility: hidden;
-    }
 }
