@@ -58,7 +58,7 @@ class ResultsController extends Controller
 
         if(isset($_GET['school_grade']))
         {
-            $filters['school_grade'] = (int)$_GET['school_grades'];
+            $filters['school_grade'] = (int)$_GET['school_grade'];
         }
         
         foreach($_GET as $k => $v)

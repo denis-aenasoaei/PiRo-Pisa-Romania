@@ -2,8 +2,8 @@
 <html lang="en-US">
 <head>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="http://127.0.0.1/PIRO-PISA-ROMANIA/StyleSheets/style.css">
-    <link rel="stylesheet" type="text/css" href="http://127.0.0.1/PIRO-PISA-ROMANIA/StyleSheets/StyleHome.css">
+    <link rel="stylesheet" type="text/css" href="StyleSheets/style.css">
+    <link rel="stylesheet" type="text/css" href="StyleSheets/StyleHome.css">
     <link rel="icon" href="Images/Home/oecd_logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PiSa Statistics</title>
@@ -14,7 +14,7 @@
             <div class="header-area">
                 <div class="header-logo">
                     <picture>
-                        <img src="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/OECD.png" title="OECD">
+                        <img src="Images/Home/OECD.png" title="OECD">
                     </picture>
                 </div>
                 <div class="header-social">
@@ -48,20 +48,20 @@
             </div>
             <div class="top_banner">
                 <picture>
-                    <img src="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/banner_top.png" title="PISA">
+                    <img src="Images/Home/banner_top.png" title="PISA">
                 </picture>
             </div>
             <nav>
                 <div class="nav-sticky">
                     <div class="nav-menu">
                         <ul id="navigation">
-                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Index.php"><li>
+                            <a href="Index.php"><li>
                                 Home
                             </li></a>
-                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Results.php"><li>
+                            <a href="Results.php"><li>
                                 Results
                             </li></a>
-                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Contact.php"><li>
+                            <a href="Contact.php"><li>
                                 Contact
                             </li></a>
                         </ul>
@@ -80,31 +80,31 @@
                 </p>
             </div>
             <div class="second">
-                <img src="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/Picture_front-page.png">
+                <img src="Images/Home/Picture_front-page.png">
                 <div>
                     <h2>
                         PISA 2018
                     </h2>
                     <p>
-                        LATEST RESULTS: <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Docs/are-students-smart-about-money.pdf">Are Students Smart about Money?</a>
+                        LATEST RESULTS: <a href="Docs/are-students-smart-about-money.pdf">Are Students Smart about Money?</a>
                     </p>
                     <ul>
                         <li>
                             <a href="#">PISA 2018 results</a>
                         </li>
                         <li>
-                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Docs/PISA%202018%20Insights%20and%20Interpretations%20FINAL%20PDF.pdf">PISA 2018: Insights and Interpretations</a>
+                            <a href="Docs/PISA%202018%20Insights%20and%20Interpretations%20FINAL%20PDF.pdf">PISA 2018: Insights and Interpretations</a>
                         </li>
                         <li>
                             Student performance snapshot:<br>
-                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_ENGLISH.png">English</a>,
-                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_FRENCH.png">French</a>,
-                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_CHINESE.png">Chinese</a>,
-                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_GERMAN.png">German</a>,
-                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_ITALIAN.png">Italian</a>,
-                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_JAPANESE.png">Japanese</a>,
-                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_PORTUGUESE.png">Portuguese</a>, and
-                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISA-results_SPANISH.png">Spanish</a>
+                            <a href="Images/Home/PISA-results_ENGLISH.png">English</a>,
+                            <a href="Images/Home/PISA-results_FRENCH.png">French</a>,
+                            <a href="Images/Home/PISA-results_CHINESE.png">Chinese</a>,
+                            <a href="Images/Home/PISA-results_GERMAN.png">German</a>,
+                            <a href="Images/Home/PISA-results_ITALIAN.png">Italian</a>,
+                            <a href="Images/Home/PISA-results_JAPANESE.png">Japanese</a>,
+                            <a href="Images/Home/PISA-results_PORTUGUESE.png">Portuguese</a>, and
+                            <a href="Images/Home/PISA-results_SPANISH.png">Spanish</a>
                         </li>
                     </ul>
                 </div>
@@ -117,7 +117,7 @@
             <div class="third_2">
                 <h2>Coming up</h2>
                 <hr>
-                <img src="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/webinar_05-07.jpg">
+                <img src="Images/Home/webinar_05-07.jpg">
                 <br>
                 <p>
                     Are Students Smart About Money? (PISA 2018, Volume IV)
@@ -131,25 +131,25 @@
             <div class="fourth_1">
                 <h2>PISA in Focus</h2>
                 <hr>
-                <img src="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/PISAinFocusimage.jpg">
+                <img src="Images/Home/PISAinFocusimage.jpg">
                 <ul>
                     <li>
-                        <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Docs/are-students-smart-about-money2.pdf">Are Students Smart About Money?</a>
+                        <a href="Docs/are-students-smart-about-money2.pdf">Are Students Smart About Money?</a>
                     </li>
                     <li>
-                        <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Docs/do-boys-and-girls.pdf">Do boys and girls have similar attitudes towards competition and failure?</a>
+                        <a href="Docs/do-boys-and-girls.pdf">Do boys and girls have similar attitudes towards competition and failure?</a>
                     </li>
                     <li>
-                        <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Docs/are-students-career.pdf">Are students’ career expectations aligned with their skills?</a>
+                        <a href="Docs/are-students-career.pdf">Are students’ career expectations aligned with their skills?</a>
                     </li>
                     <li>
-                        <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Docs/where-did-reading.pdf">Where did reading proficiency improve over time?</a>
+                        <a href="Docs/where-did-reading.pdf">Where did reading proficiency improve over time?</a>
                     </li>
                     <li>
-                        <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Docs/how-are-pisa-results.pdf">How are PISA results related to adult life outcomes?</a>
+                        <a href="Docs/how-are-pisa-results.pdf">How are PISA results related to adult life outcomes?</a>
                     </li>
                     <li>
-                        <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Docs/how-does-pisa-define.pdf">How does PISA define and measure reading literacy?</a>
+                        <a href="Docs/how-does-pisa-define.pdf">How does PISA define and measure reading literacy?</a>
                     </li>
                 </ul>
             </div>
@@ -200,7 +200,7 @@
                     </ul>
                 </div>
                 <div class="fifth_4">
-                    <img src="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/logo.png">
+                    <img src="Images/Home/logo.png">
                 </div>
             </div>
         </main>
