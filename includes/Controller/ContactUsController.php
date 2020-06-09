@@ -47,7 +47,7 @@ class ContactUsController extends Controller{
   echo "Lastname :$lname<br>";
   echo "City :$selectOption<br> ";
   echo "Message: $subject <br>";*/
-  $dataB=this->model->insertContactInDb($fname,$lname,$selectOption,$subject);
+  $dataB=$this->model->insertContactInDb($fname,$lname,$selectOption,$subject);
     }
 else
 {
