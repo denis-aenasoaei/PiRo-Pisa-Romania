@@ -80,5 +80,19 @@ input[type=submit] {
         width:87%;
     }
 }
+@media only screen and (max-width: 650px) {
+    .col1 {
+        width: 87%;
+    }
+
+    .col2 {
+        width: 100%;
+    }
+
+    img {
+        visibility: hidden;
+    }
+}
+
 
 

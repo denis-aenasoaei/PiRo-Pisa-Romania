@@ -3,6 +3,7 @@
 //am lasat aici pentru a nu pastra acel formular.php (nu ar mai functiona oricum dupa ce am facut toate modificarile astea)
 //Poti sterge oricand crezi ca nu mai ai nevoie de codul asta :) 
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
+//if (isset($_POST["submit"]))
 { 
 $fname = $_POST["firstname"];
 $lname = $_POST["lastname"];
