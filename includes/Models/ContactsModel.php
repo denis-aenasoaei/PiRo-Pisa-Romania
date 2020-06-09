@@ -9,9 +9,13 @@ class ContactsModel{
 
     public function insertContactInDb($firstName,$lastName,$city,$subject)
     {
-        $sql="INSERT INTO contact(Firstname,Lastname,City,Sibject) values(?,?,?,?)"
+        $sql="INSERT INTO contact(Firstname,Lastname,City,Subject) values(?,?,?,?)";
         $request = $this->connection2->prepare($sql);
-        $request->bindParam($firstName,$lastName,$city,$subject);
+        $request->bindParam(1, $firstName);
+        $request->bindParam(2, $lastName);
+        $request->bindParam(3, $city);
+        $request->bindParam(4, $subject);
+
         $request->execute();
     }
 }

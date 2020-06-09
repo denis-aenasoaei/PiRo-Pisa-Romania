@@ -25,7 +25,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 if(strpos($currController,"index.php") !== false )
 {
     $controller = new IndexController();
-    Route::run($_GET['url']);
+    Route::run($currController);
     //parse request
 }
 elseif(strpos($currController,"Results.php") !== false)
@@ -33,13 +33,11 @@ elseif(strpos($currController,"Results.php") !== false)
     $controller = new ResultsController();
     if(count($_GET) == 1)
     {
-        if(isset($_GET['url']))
-            Route::run($_GET['url']);
+        Route::run($currController);
     }
     else
     {
         $controller->getFiltered();
-        
     }
 
 
@@ -48,16 +46,11 @@ elseif(strpos($currController,"Contact.php") !== false)
 {
     
     $controller = new ContactUsController();
-   /* if($method === "POST")
+    if($method === "POST")
     {
-        //insert comentariu in BD
+        $controller->insertComment();
     }
-    else
-    {*/
-        Route::run($_GET['url']);
-  //  }
-
+    Route::run($currController);
 }
-
 
 ?>
