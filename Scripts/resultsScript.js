@@ -2,6 +2,9 @@ Chart.defaults.global.elements.line.fill = false;
 
 let chartType = 'bar';
 let numberOfCountries = 1;
+let means = [];
+let countries = [];
+
 let data=null;
 let backgroundChartColors =["rgba(255,0,0,0.5)","rgba(0,255,0,0.5)","rgba(0,0,255,0.5)","rgba(12,189,176,0.5)","rgba(149,176,73,0.5)","rgba(137,161,114,0.5)","rgba(86,88,168,0.5)","rgba(152,165,28,0.5)","rgba(57,82,111,0.5)","rgba(70,63,146,0.5)","rgba(122,57,0,0.5)","rgba(36,146,124,0.5)","rgba(205,34,126,0.5)","rgba(111,148,24,0.5)","rgba(57,35,209,0.5)","rgba(39,227,35,0.5)","rgba(22,137,116,0.5)","rgba(124,53,202,0.5)","rgba(16,66,187,0.5)","rgba(59,51,112,0.5)"];
 let borderChartColors = ["rgba(255,0,0,1)","rgba(0,255,0,1)","rgba(0,0,255,1)"  ,"rgba(12,189,176,1)","rgba(149,176,73,1)","rgba(137,161,114,1)","rgba(86,88,168,1)","rgba(152,165,28,1)","rgba(57,82,111,1)","rgba(70,63,146,1)","rgba(122,57,0,1)","rgba(36,146,124,1)","rgba(205,34,126,1)","rgba(111,148,24,1)","rgba(57,35,209,1)","rgba(39,227,35,1)","rgba(22,137,116,1)","rgba(124,53,202,1)","rgba(16,66,187,1)","rgba(59,51,112,1)"];
@@ -41,8 +44,26 @@ function download(type) {
         dl.download="Chart.png";
         dl.href=img;
     }
-    if(type==="CSV") {
+    if (type === "CSV") {
+        var str = '';
 
+        for (var i = 0; i < means.length; i++) {
+            var line = '';
+            for (var index in means[i]) {
+                if (line != '') line += ','
+
+                line += means[i][index];
+            }
+
+            str += line + '\r\n';
+        }
+
+        if (navigator.appName != 'Microsoft Internet Explorer') {
+            window.open('data:text/csv;charset=utf-8,' + escape(str));
+        }
+        else {
+            window.open('data:text / csv; charset = utf - 8; base64, ' + $.base64Encode(output));
+        }     
     }
     dl.click();
     document.body.removeChild(dl);
