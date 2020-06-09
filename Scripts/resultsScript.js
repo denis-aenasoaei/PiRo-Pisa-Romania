@@ -1,8 +1,10 @@
+Chart.defaults.global.elements.line.fill = false;
+
 let chartType = 'bar';
 let numberOfCountries = 1;
 let data=null;
-let backgroundChartColors =["rgba(36,222,234,0.5)","rgba(104,234,75,0.5)","rgba(27,137,155,0.5)","rgba(12,189,176,0.5)","rgba(149,176,73,0.5)","rgba(137,161,114,0.5)","rgba(86,88,168,0.5)","rgba(152,165,28,0.5)","rgba(57,82,111,0.5)","rgba(70,63,146,0.5)","rgba(122,57,0,0.5)","rgba(36,146,124,0.5)","rgba(205,34,126,0.5)","rgba(111,148,24,0.5)","rgba(57,35,209,0.5)","rgba(39,227,35,0.5)","rgba(22,137,116,0.5)","rgba(124,53,202,0.5)","rgba(16,66,187,0.5)","rgba(59,51,112,0.5)"];
-let borderChartColors = ["rgba(36,222,234,1)","rgba(104,234,75,1)","rgba(27,137,155,1)","rgba(12,189,176,1)","rgba(149,176,73,1)","rgba(137,161,114,1)","rgba(86,88,168,1)","rgba(152,165,28,1)","rgba(57,82,111,1)","rgba(70,63,146,1)","rgba(122,57,0,1)","rgba(36,146,124,1)","rgba(205,34,126,1)","rgba(111,148,24,1)","rgba(57,35,209,1)","rgba(39,227,35,1)","rgba(22,137,116,1)","rgba(124,53,202,1)","rgba(16,66,187,1)","rgba(59,51,112,1)"];
+let backgroundChartColors =["rgba(255,0,0,0.5)","rgba(0,255,0,0.5)","rgba(0,0,255,0.5)","rgba(12,189,176,0.5)","rgba(149,176,73,0.5)","rgba(137,161,114,0.5)","rgba(86,88,168,0.5)","rgba(152,165,28,0.5)","rgba(57,82,111,0.5)","rgba(70,63,146,0.5)","rgba(122,57,0,0.5)","rgba(36,146,124,0.5)","rgba(205,34,126,0.5)","rgba(111,148,24,0.5)","rgba(57,35,209,0.5)","rgba(39,227,35,0.5)","rgba(22,137,116,0.5)","rgba(124,53,202,0.5)","rgba(16,66,187,0.5)","rgba(59,51,112,0.5)"];
+let borderChartColors = ["rgba(255,0,0,1)","rgba(0,255,0,1)","rgba(0,0,255,1)"  ,"rgba(12,189,176,1)","rgba(149,176,73,1)","rgba(137,161,114,1)","rgba(86,88,168,1)","rgba(152,165,28,1)","rgba(57,82,111,1)","rgba(70,63,146,1)","rgba(122,57,0,1)","rgba(36,146,124,1)","rgba(205,34,126,1)","rgba(111,148,24,1)","rgba(57,35,209,1)","rgba(39,227,35,1)","rgba(22,137,116,1)","rgba(124,53,202,1)","rgba(16,66,187,1)","rgba(59,51,112,1)"];
 
 
 function download(type) {
@@ -164,6 +166,7 @@ function getDataAndCreateChart(){
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+
         document.getElementById("chart").remove(); 
         div = document.querySelector("#chart-container");
         document.getElementById("exportPNG").style.display="inline";
@@ -171,27 +174,33 @@ function getDataAndCreateChart(){
         document.getElementById("exportSVG").style.display="inline";
         div.insertAdjacentHTML("afterbegin", "<canvas id='chart'></canvas>");
         let scores = JSON.parse(this.responseText);
-        let countries = [];
-        let means = [];
+        countries = [];
+        means = [];
         for(let i of Object.keys(scores) )
         {
             means.push(scores[i]["MEAN"]);
             countries.push(scores[i]["Country"]);
         }
         const ctx = document.getElementById("chart").getContext('2d');
-        const graphData={
+        let graphData = {};
+        if(chartType == 'bar')
+        { 
+            graphData={
             type: chartType,
             data: {
                 labels: countries,
                 datasets: [{
-                    label: 'PISA Test Scores',
                     data: means,
                     backgroundColor: backgroundChartColors,
                     borderColor: borderChartColors,
                     borderWidth: 1
                 }]
+
             },
-            options: {
+            options:{
+                legend:{
+                    display:false
+                },
                 scales: {
                     yAxes: [{
                         ticks: {
@@ -201,9 +210,58 @@ function getDataAndCreateChart(){
                 }
             }
         }
+        }
+        else if(chartType == 'points')
+        {
+            graphData={
+                type: 'line',
+                data: {
+                    labels: "PisaTestResults",
+                    datasets: []
+                },
+                options:{
+                    legend:{
+                        display:true
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                min:0,
+                                max:580
+                            }
+                        }]
+                    }
+                }
+            }
+            for(let i=0;i<means.length;i++)
+            {
+                graphData.data.datasets.push({
+                    label: countries[i],
+                    data: [null, null, null, null,null, null, null, means[i]],
+                    borderColor:borderChartColors[i],
+                    borderWidth:10
+                })
+            }
+        }
+        else if(chartType == 'polarArea')
+        {
+            graphData = {
+                type:'polarArea',
+                data: {
+                    labels: countries,
+                    datasets:[{
+                        data:means,
+                        backgroundColor:backgroundChartColors,
+                        borderColor: borderChartColors
+                    }]
+                },
+                options:{}
+            }
+        }   
 
         graphData.options.responsive=false;
         data=graphData;
+        console.log(graphData);
         const chart = new Chart(ctx, graphData);
 
     }
@@ -220,11 +278,11 @@ window.onload = function ()
         getDataAndCreateChart();
     });
     document.getElementById("button-point").addEventListener("click", function(){
-        chartType="line";
+        chartType="points";
         getDataAndCreateChart();
     });
-    document.getElementById("button-scatter").addEventListener("click", function(){
-        chartType="scatter";
+    document.getElementById("button-polar").addEventListener("click", function(){
+        chartType="polarArea";
         getDataAndCreateChart();
     });
 
@@ -251,8 +309,6 @@ window.onload = function ()
         }
     });
     
-
-
     document.getElementById("indicator-combo-box").addEventListener("change", getDataAndCreateChart);
     document.getElementById("gender-combo-box").addEventListener("change", getDataAndCreateChart);
     document.getElementById("wealth-combo-box").addEventListener("change", this.getDataAndCreateChart);
@@ -263,4 +319,5 @@ window.onload = function ()
     document.getElementById("age_16").addEventListener('change', getDataAndCreateChart);
 
     this.checkIfRomaniaAndGetData();
+
 }
