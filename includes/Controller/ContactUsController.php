@@ -49,14 +49,15 @@ class ContactUsController extends Controller{
   echo "Message: $subject <br>";*/
   $dataB=$this->model->insertContactInDb($fname,$lname,$selectOption,$subject);
     }
-else
-{
+        else
+        {
     header("Location: includes/Views/Contact.php");
     exit();
-}
+        }
 
 }
     
+}
 }
 
 ?>
