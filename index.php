@@ -48,15 +48,12 @@ elseif(strpos($currController,"Contact.php") !== false)
 {
     
     $controller = new ContactUsController();
-    if($method === "POST")
-    {
-        //insert comentariu in BD
-    }
-    else
-    {
-        Route::run($_GET['url']);
-    }
     
+    Route::run($_GET['url']);
+    
+}
+else{
+    header("Location:http://127.0.0.1/index.php?url=index.php");
 }
 
 

@@ -2,7 +2,7 @@
 
 //am lasat aici pentru a nu pastra acel formular.php (nu ar mai functiona oricum dupa ce am facut toate modificarile astea)
 //Poti sterge oricand crezi ca nu mai ai nevoie de codul asta :) 
-if ($_SERVER["REQUEST_METHOD"] == "POST") 
+if ($_SERVER["REQUEST_METHOD"] === "POST") 
 { 
 $fname = $_POST["firstname"];
 $lname = $_POST["lastname"];
@@ -33,6 +33,7 @@ if (empty($subject)) {
   } else {
     $subject = $_POST["subject"];
   }
+  print_r($errors);
   
   if ( count( $errors ) == 0 ) {
   echo "Firstname :$fname<br>";
@@ -127,7 +128,7 @@ else
             </div>
             <div class="row">
                 <div class="col1">
-                    <form action="Contact.php" method="POST">
+                    <form action="http://127.0.0.1/PIRO-PISA-ROMANIA/Contact.php" method="POST">
                         <label for="fname">First Name</label>
                         <input type="text" id="fname" name="firstname"  placeholder="Your name..">
                         <label for="lname">Last Name</label>

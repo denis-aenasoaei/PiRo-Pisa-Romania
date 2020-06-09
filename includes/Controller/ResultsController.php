@@ -35,21 +35,6 @@ class ResultsController extends Controller
         {
             $filters['wealth_range'] = strtoupper($_GET['wealth_range']);
         }
-       /* if (isset($_GET['mean_type']))
-        {
-            $means = $_GET['mean_type'];
-            switch ($means) {
-                case 'math':
-                    $data = $this->model->getArrayBasedOnFilters("math", $filters, $countries);
-                    break;
-                case 'science':
-                    $data = $this->model->getArrayBasedOnFilters("science", $filters, $countries);
-                    break;
-                case 'read':
-                    $data = $this->model->getArrayBasedOnFilters("read", $filters, $countries);
-                    break;
-            }
-        }*/
 
         if(isset($_GET['age']))
         {
@@ -103,7 +88,7 @@ class ResultsController extends Controller
                         $data = $this->model->getArrayBasedOnFilters("math", NULL, $countries);
                         break;
                     case 'science':
-                        $data = $this->model->getArrayBasedOnFilters("science", NULL, $countries);
+                        $data = $this->model->getArrayBasedOnFilters("scie", NULL, $countries);
                         break;
                     case 'read':
                         $data = $this->model->getArrayBasedOnFilters("read", NULL, $countries);
