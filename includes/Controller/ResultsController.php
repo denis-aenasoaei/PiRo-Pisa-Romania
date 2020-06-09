@@ -53,7 +53,8 @@ class ResultsController extends Controller
                 array_push($countries, $_GET[$k]);
             }
         }
-        if(!empty($filters))
+        
+        if(sizeof($filters) > 0 )
         {
             if (isset($_GET['mean_type']))
             {
@@ -63,7 +64,7 @@ class ResultsController extends Controller
                         $data = $this->model->getArrayBasedOnFilters("math", $filters, $countries);
                         break;
                     case 'science':
-                        $data = $this->model->getArrayBasedOnFilters("science", $filters, $countries);
+                        $data = $this->model->getArrayBasedOnFilters("scie", $filters, $countries);
                         break;
                     case 'read':
                         $data = $this->model->getArrayBasedOnFilters("read", $filters, $countries);
@@ -75,7 +76,7 @@ class ResultsController extends Controller
             }
             else
             {
-                $data = $this->model->getArrayBasedOnFilters("All", NULL, $countries);
+                $data = $this->model->getArrayBasedOnFilters("All", $filters, $countries);
             }
         }
         else

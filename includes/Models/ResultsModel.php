@@ -51,7 +51,6 @@ class ResultsModel
                             }
                             $request->execute();
                             
-                            var_dump($request);
                             array_push($outputCountriesData, $request->fetch(\PDO::FETCH_ASSOC));
                         }
                         else
@@ -62,6 +61,7 @@ class ResultsModel
                             array_push($outputCountriesData, $request->fetch(\PDO::FETCH_ASSOC));
                             
                         }
+                        
                     }
                     else
                     {
@@ -79,7 +79,6 @@ class ResultsModel
             {
                 foreach($countries as $country)
                 {
-
                     if(strpos('Romania', $country) !== false)
                     {
                         
@@ -116,6 +115,7 @@ class ResultsModel
                         }
                         else
                         {
+                            
                             $sql = "SELECT nvl(FLOOR(AVG(" . strtoupper($desiredMean) . "_GRADE)), 0) as 'MEAN', 'Romania' as 'Country' FROM `ROMANIA_DATA`";
                             $request = $this->connection->prepare($sql);
                             $request->execute();
@@ -125,7 +125,6 @@ class ResultsModel
                     else
                     {
                         $sql = "SELECT nvl(" . strtoupper($desiredMean) . "_MEAN, 0) as 'MEAN', Country as 'Country' FROM `COUNTRY_SCORES` where Country =? ";
-
                         $request = $this->connection->prepare($sql);
                         $request->bindParam(1, $country);
                         $request->execute();

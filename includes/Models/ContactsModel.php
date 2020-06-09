@@ -15,7 +15,6 @@ class ContactsModel{
         $request->bindParam(2, $lastName);
         $request->bindParam(3, $city);
         $request->bindParam(4, $subject);
-
         $request->execute();
     }
 }
