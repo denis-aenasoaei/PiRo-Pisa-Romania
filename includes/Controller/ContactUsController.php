@@ -35,13 +35,13 @@ class ContactUsController extends Controller{
         }
     }  
     
-    /*if (empty($email)) {
+    if (empty($email)) {
         $errors[]="E-mail is required";
     } else {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = "Invalid email format";
         }
-    }*/
+    }
         if (empty($subject)) {
             $subject = "";
             } else {
