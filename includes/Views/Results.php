@@ -72,7 +72,7 @@
                 </nav>
             </header>
             
-
+            <p id="tmp"> </p>
             <section class="layout-container">
                 <div class="filter-container">
                     <article class="countries-container">
@@ -81,6 +81,7 @@
                         <button type="button" class="filter-button" id="btn-remove-country"> Remove a country </button> 
                         <form id="country-choice">
                             <select id="c1" name="c1">
+                                <option value="Romania"> Romania </option>
                                 <option value="Albania"> Albania </option>
                                 <option value="Argentina"> Argentina </option>
                                 <option value="Australia"> Australia </option>
@@ -141,8 +142,7 @@
                                 <option value="Philippines"> Philippines </option>      
                                 <option value="Poland"> Poland </option>      
                                 <option value="Portugal*"> Portugal </option>      
-                                <option value="Qatar"> Qatar </option>      
-                                <option value="Romania"> Romania </option>      
+                                <option value="Qatar"> Qatar </option>       
                                 <option value="Russia"> Russia </option>      
                                 <option value="Saudi Arabia"> Saudi Arabia </option>      
                                 <option value="Serbia"> Serbia </option>      
@@ -163,59 +163,73 @@
                             </select>
                         </form>   
                     </article>
-                    <article class="age-container">
-                        <p id="age-label" class="label"> Age </p>
-                        <form id="age-choice">
-                            <label for="age_15"> 15 </label>
-                            <input type="checkbox" id="age_15" name="age_15">
-                            <label for="age_16"> 16 </label>
-                            <input type="checkbox" id="age_16" name="age_16">
-                        </form>
-                    </article>
-                    <article class="wealth-container">
-                        <p id="wealth-label" class="label"> Wealth </p>
-                        <form id="wealth-choice">
-                            <select id="wealth-combo-box" name="wealth-combo-box">
-                                <option value="All"> All incomes </option>
-                                <option value="LOW"> Low income </option>
-                                <option value="MEDIUM"> Medium income </option>
-                                <option value="HIGH"> High income </option>
-                            </select>
-                        </form>
-                    </article>
-                    <article class="school-grade-container">
-                        <p id="school-grade-label" class="label"> School grade </p>
-                        <form id="school-grade-choice">
-                            <label for="grade_9"> 9 </label>
-                            <input type="checkbox" id="grade_9" name="grade_9">
-                            <label for="grade_10"> 10 </label>
-                            <input type="checkbox" id="grade_10" name="grade_10">
-                        </form>
-                    </article>
-                    <article class="gender-container">
-                        <p id="gender-label" class="label"> Gender </p>
-                        <form id="gender-choice">
-                            <select id="gender-combo-box" name="gender-combo-box">
-                                <option value="3"> All </option>
-                                <option value="1"> Female </option>
-                                <option value="2"> Male </option>
-                            </select>
-                        </form>
-                    </article>
-                    <article class="indicator-container">
-                    <p id="indicator-label" class="label"> PISA Indicator </p>
-                        <form id="indicator-choice">
-                            <select id="indicator-combo-box" name="indicator-combo-box">
-                                <option value="All"> All </option>
-                                <option value="reading"> Reading </option>
-                                <option value="math"> Math </option>
-                                <option value="science"> Science </option>
-                            </select>
-                        </form>
+                    <div id="filter-wrapper">
+                        <article class="age-container">
+                            <p id="age-label" class="label"> Age </p>
+                            <form id="age-choice">
+                                <label for="age_15"> 15 </label>
+                                <input type="checkbox" id="age_15" name="age_15">
+                                <label for="age_16"> 16 </label>
+                                <input type="checkbox" id="age_16" name="age_16">
+                            </form>
+                        </article>
+                        <article class="wealth-container">
+                            <p id="wealth-label" class="label"> Wealth </p>
+                            <form id="wealth-choice">
+                                <select id="wealth-combo-box" name="wealth-combo-box">
+                                    <option value="All"> All incomes </option>
+                                    <option value="LOW"> Low income </option>
+                                    <option value="MEDIUM"> Medium income </option>
+                                    <option value="HIGH"> High income </option>
+                                </select>
+                            </form>
+                        </article>
+                        <article class="school-grade-container">
+                            <p id="school-grade-label" class="label"> School grade </p>
+                            <form id="school-grade-choice">
+                                <label for="grade_9"> 9 </label>
+                                <input type="checkbox" id="grade_9" name="grade_9">
+                                <label for="grade_10"> 10 </label>
+                                <input type="checkbox" id="grade_10" name="grade_10">
+                            </form>
+                        </article>
+                        <article class="gender-container">
+                            <p id="gender-label" class="label"> Gender </p>
+                            <form id="gender-choice">
+                                <select id="gender-combo-box" name="gender-combo-box">
+                                    <option value="3"> All </option>
+                                    <option value="1"> Female </option>
+                                    <option value="2"> Male </option>
+                                </select>
+                            </form>
+                        </article>
+                    </div>
+                        <article class="indicator-container">
+                        <p id="indicator-label" class="label"> PISA Indicator </p>
+                            <form id="indicator-choice">
+                                <select id="indicator-combo-box" name="indicator-combo-box">
+                                    <option value="All"> All </option>
+                                    <option value="reading"> Reading </option>
+                                    <option value="math"> Math </option>
+                                    <option value="science"> Science </option>
+                                </select>
+                            </form>
+                        </article>
+                    
                 </div>
                 
-                <div class="chart-area">
-                
+                <div class="chart-area" id="chart-container">
+                    <canvas id="chart"> </canvas>
+                </div>
+
+                <div class="options-area">
+                    <button class="options-button" id="exportPNG"  onclick="download('PNG')"> Export PNG</button>
+                    <button class="options-button" id="exportSVG" onclick="download('SVG')"> Export SVG</button>
+                    <button class="options-button" id="exportCSV" onclick="download('CSV')"> Export CSV</button>
+                    <button class="chart-type-button" id="button-barchart"> Bar Chart </button>
+                    <button class="chart-type-button" id="button-point"> Points Chart </button>
+                    <button class="chart-type-button" id="button-scatter"> Scatter Chart </button>
+                    
                 </div>
             </section>
         </body>

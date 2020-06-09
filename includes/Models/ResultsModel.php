@@ -36,7 +36,7 @@ class ResultsModel
                     if(strpos('Romania', $country) !== false)
                     {
                         
-                        $sql = "SELECT nvl(AVG(MATH_GRADE), 0) as 'MEAN', 'Romania' as 'Country' FROM `ROMANIA_DATA`";
+                        $sql = "SELECT nvl(FLOOR(AVG(MATH_GRADE)), 0) as 'MEAN', 'Romania' as 'Country' FROM `ROMANIA_DATA`";
                         if($filters !== NULL)
                         {
                             $sql .= " WHERE ";
@@ -69,7 +69,7 @@ class ResultsModel
                         }
                         else
                         {
-                            $sql = "SELECT nvl(AVG(MATH_GRADE), 0) as 'MEAN', 'Romania' as 'Country' FROM `ROMANIA_DATA`";
+                            $sql = "SELECT nvl(FLOOR(AVG(MATH_GRADE)), 0) as 'MEAN', 'Romania' as 'Country' FROM `ROMANIA_DATA`";
                             $request = $this->connection->prepare($sql);
                             $request->execute();
                             
@@ -99,7 +99,7 @@ class ResultsModel
                     if(strpos('Romania', $country) !== false)
                     {
                         
-                        $sql = "SELECT nvl(AVG(SCIE_GRADE), 0) as 'MEAN', 'Romania' as 'Country' FROM `ROMANIA_DATA`";
+                        $sql = "SELECT nvl(FLOOR(AVG(SCIE_GRADE)), 0) as 'MEAN', 'Romania' as 'Country' FROM `ROMANIA_DATA`";
                         if($filters !== NULL)
                         {
                             $sql .= " WHERE ";
@@ -132,7 +132,7 @@ class ResultsModel
                         }
                         else
                         {
-                            $sql = "SELECT nvl(AVG(SCIE_GRADE), 0) as 'MEAN', 'Romania' as 'Country' FROM `ROMANIA_DATA`";
+                            $sql = "SELECT nvl(FLOOR(AVG(SCIE_GRADE)), 0) as 'MEAN', 'Romania' as 'Country' FROM `ROMANIA_DATA`";
                             $request = $this->connection->prepare($sql);
                             $request->execute();
                             array_push($outputCountriesData, $request->fetch(\PDO::FETCH_ASSOC));
@@ -162,7 +162,7 @@ class ResultsModel
                     if(strpos('Romania', $country) !== false)
                     {
                         
-                        $sql = "SELECT nvl(AVG(READ_GRADE), 0) as 'MEAN', 'Romania' as 'Country' FROM `ROMANIA_DATA`";
+                        $sql = "SELECT nvl(FLOOR(AVG(READ_GRADE)), 0) as 'MEAN', 'Romania' as 'Country' FROM `ROMANIA_DATA`";
                         if($filters !== NULL)
                         {
                             $sql .= " WHERE ";
@@ -195,7 +195,7 @@ class ResultsModel
                         }
                         else
                         {
-                            $sql = "SELECT nvl(AVG(READ_GRADE), 0) as 'MEAN', 'Romania' as 'Country' FROM `ROMANIA_DATA`";
+                            $sql = "SELECT nvl(FLOOR(AVG(READ_GRADE)), 0) as 'MEAN', 'Romania' as 'Country' FROM `ROMANIA_DATA`";
                             $request = $this->connection->prepare($sql);
                             $request->execute();
                             array_push($outputCountriesData, $request->fetch(\PDO::FETCH_ASSOC));
