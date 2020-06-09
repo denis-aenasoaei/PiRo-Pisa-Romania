@@ -96,4 +96,11 @@ html {
         grid-column: 1;
         grid-row:2;
     }
+
+    .top_banner{
+        display:none;
+    }
+    nav{
+        justify-content: center;
+    }
 }

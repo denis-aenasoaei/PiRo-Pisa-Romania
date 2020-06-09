@@ -1,54 +1,4 @@
-﻿<?php
-
-//am lasat aici pentru a nu pastra acel formular.php (nu ar mai functiona oricum dupa ce am facut toate modificarile astea)
-//Poti sterge oricand crezi ca nu mai ai nevoie de codul asta :) 
-if ($_SERVER["REQUEST_METHOD"] === "POST") 
-{ 
-$fname = $_POST["firstname"];
-$lname = $_POST["lastname"];
-$selectOption = $_POST["city"];
-$subject = $_POST["subject"]; 
-$errors = array();
-    if (empty($fname)) {
-        $errors[]="Firtsname is required";
-      } else {
-          // check if name only contains letters and whitespace
-        if (!preg_match("/^[a-zA-Z ]*$/",$fname)) {
-          $errors[]= "Only letters and white space allowed";
-        }
-    }
-    
-      if (empty($lname)) {
-        $errors[]="Lastname is required";
-      } else {
-      
-        // check if name only contains letters and whitespace
-        if (!preg_match("/^[a-zA-Z ]*$/",$lname)) {
-          $errors[]= "Only letters and white space allowed";
-        }
-      }    
-
-if (empty($subject)) {
-    $subject = "";
-  } else {
-    $subject = $_POST["subject"];
-  }
-  print_r($errors);
-  
-  if ( count( $errors ) == 0 ) {
-  echo "Firstname :$fname<br>";
-  echo "Lastname :$lname<br>";
-  echo "City :$selectOption<br> ";
-  echo "Message: $subject <br>";
-    }
-else
-{
-    header("Location: includes/Views/Contact.php");
-    exit();
-}
-
-}
-?>
+﻿<!DOCTYPE html>
 <html lang="en-US">
 <head>
     <link rel="stylesheet" type="text/css" href="StyleSheets/style.css">
@@ -178,7 +128,6 @@ else
                         <input type="submit" value="Submit">
                     </form>
                     
-                    <!formaction="includes/Controller/ContactUsController.php" >
                 </div>
                 <div class="col2">
                     <img src="Images/Home/download.jpg">
