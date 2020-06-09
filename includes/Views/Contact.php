@@ -83,6 +83,8 @@
                         <input type="text" id="fname" name="firstname"  placeholder="Your name..">
                         <label for="lname">Last Name</label>
                         <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                        <label for="e-mail">E-mail</label>
+                        <input type="text" id="e-mail" name="e-mail" placeholder="Your e-mail..">
                         <label for="city">City</label>
                         <select id="city" name="city">
                             <option value="Alba Iulia">Alba Iulia</option>
