@@ -1,8 +1,0 @@
-1.home-Pisa;
-2.Vazut ce trebuie sa contina baza de date(modelul Pisa)
-3.Populare baza de date
-4.Realizarea de grafice(Chart.js)
-5.MVC,sesiuni,cookies
-6.Mod admin
-7.Cod cu handle request
-8.Modalitatea de prezentare a rezultatelor in Pisa
