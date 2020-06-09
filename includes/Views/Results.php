@@ -154,7 +154,7 @@
                                 <option value="Slovak Republic"> Slovak Republic </option>      
                                 <option value="Slovenia"> Slovenia </option>      
                                 <option value="Spain"> Spain </option>         
-                                <option value="Sweeden"> Sweeden </option>      
+                                <option value="Sweden"> Sweden </option>      
                                 <option value="Switzerland"> Switzerland </option>      
                                 <option value="Thailand"> Thailand </option>      
                                 <option value="Turkey"> Turkey </option>      
