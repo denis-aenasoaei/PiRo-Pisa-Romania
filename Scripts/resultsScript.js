@@ -39,26 +39,17 @@ function download(type) {
         dl.download="Chart.png";
         dl.href=img;
     }
-    if (type === "CSV") {
-        var str = '';
-
-        for (var i = 0; i < means.length; i++) {
-            var line = '';
-            for (var index in means[i]) {
-                if (line != '') line += ','
-
-                line += means[i][index];
-            }
-
-            str += line + '\r\n';
+    if (type === "CSV") {     
+       // countries = [];
+        //means = [];
+        csv = "Country,Mean \r\n";
+        for (var i = 0; i < countries.length; i++) {
+            csv += countries[i].concat(",").concat(means[i]).concat("r\n");
         }
-
-        if (navigator.appName != 'Microsoft Internet Explorer') {
-            window.open('data:text/csv;charset=utf-8,' + escape(str));
-        }
-        else {
-            window.open('data:text / csv; charset = utf - 8; base64, ' + $.base64Encode(output));
-        }     
+       dl.download = "Chart.csv";
+        dl.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+   
+        
     }
     dl.click();
     document.body.removeChild(dl);
@@ -182,7 +173,6 @@ function getDataAndCreateChart(){
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-
         document.getElementById("chart").remove(); 
         div = document.querySelector("#chart-container");
         document.getElementById("exportPNG").style.display="inline";
