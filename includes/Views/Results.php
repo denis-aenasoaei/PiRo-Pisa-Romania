@@ -4,13 +4,8 @@
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.bundle.min.js"></script>
         <script type="text/javascript" src="Scripts/canvas2svg.js"></script>
-
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<<<<<<< HEAD
         <script src="Scripts/canvas2svg.js"></script>
-=======
-
->>>>>>> 8ec9d2b33855626f2cade7740c5e9e5845f258c5
         <script src="Scripts/resultsScript.js"></script>
         <link rel="stylesheet" type="text/css" href="StyleSheets/style.css">
         <link rel="stylesheet" type="text/css" href="StyleSheets/StyleResults.css">
