@@ -48,7 +48,7 @@
                             <option value="romania_data"> Data from romania </option>
                             <option value="country_scores"> Data from other countries </option>
                         </select>
-                        <label for="action-type">Action: </label>
+                        <label for="action-type"> Action: </label>
                         <select name="action-type" id="action-type">
                             <option value="add"> Add row </option>
                             <option value="update">Update a row </option>
@@ -56,21 +56,47 @@
                         </select>
                     </form>
 
-                    <form id="add-country">
-                        <label for="country">Country name </label>
-                        <input type="text" name="country">
-                        <br>
-                        <label for="math">Math Score </label>
-                        <input type="text" name="math">
-                        <br>
-                        <label for="scie">Science Score </label>
-                        <input type="text" name="scie">
-                        <br>
-                        <label for="read">Reading score </label>
-                        <input type="text" name="read">
+                    <form id="modify-details">
+                        <label for="input1" id="LB_input1" class=""> Username </label>
+                        <input type="text" name="input1" id="input1" class="">
+                        <label for="input2" id="LB_input2" class=""> Password </label>
+                        <input type="password" name="input2" id="input2" class="">
+                        <label for="input3" class="hidden" id="LB_input3"> Science Score </label>
+                        <input type="text" name="input3" class="hidden" id="input3">
+                        <label for="input4" class="hidden" id="LB_input4"> Reading score </label>
+                        <input type="text" name="input4" class="hidden" id="input4">
+                        <label for="input5" class="hidden" id="LB_input5"> Gender </label>
+                        <select name="input5" class="hidden" id="input5">
+                            <option value="1"> Female </option>
+                            <option value="2"> Male </option>
+                        </select>
+                        <label for="input6" class="hidden" id="LB_input6"> School Grade </label>
+                        <select name="input6" class="hidden" id="input6">
+                            <option value="10"> Female </option>
+                            <option value="11"> Male </option>
+                        </select>
+                        <label for="input7" class="hidden" id="LB_input7"> Age </label>
+                        <select name="input7" class="hidden" id="input7">
+                            <option value="15"> 15 </option>
+                            <option value="16"> 16 </option>
+                        </select>
+                        <label for="input8" class="hidden" id="LB_input8"> Wealth Range </label>
+                        <select name="input8" class="hidden" id="input8">
+                            <option value="LOW"> Low </option>
+                            <option value="MEDIUM"> Medium </option>
+                            <option value="HIGH"> High </option>
+                        </select>
                     </form>
-                        
+                
+                <button id="btn-submit"> Submit modifications </button>
             </div>
+            <div class="doElse hidden">
+                <p> PLACEHOLDER, WILL BE REPLACED BY FUNCTIONALITY </p>
+            </div>
+            <div class="doElseElse hidden">
+                <p> PLACEHOLDER, WILL BE REPLACED BY ANOTHER NEW FUNCTIONALITY </p>
+            </div>
+                
         </div>
         <div class="logout-wrapper">
             <button id="logout">Logout</button>
