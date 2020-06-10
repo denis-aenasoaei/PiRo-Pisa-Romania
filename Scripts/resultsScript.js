@@ -1,8 +1,13 @@
+Chart.defaults.global.elements.line.fill = false;
+
 let chartType = 'bar';
 let numberOfCountries = 1;
+let means = [];
+let countries = [];
+
 let data=null;
-let backgroundChartColors =["rgba(36,222,234,0.5)","rgba(104,234,75,0.5)","rgba(27,137,155,0.5)","rgba(12,189,176,0.5)","rgba(149,176,73,0.5)","rgba(137,161,114,0.5)","rgba(86,88,168,0.5)","rgba(152,165,28,0.5)","rgba(57,82,111,0.5)","rgba(70,63,146,0.5)","rgba(122,57,0,0.5)","rgba(36,146,124,0.5)","rgba(205,34,126,0.5)","rgba(111,148,24,0.5)","rgba(57,35,209,0.5)","rgba(39,227,35,0.5)","rgba(22,137,116,0.5)","rgba(124,53,202,0.5)","rgba(16,66,187,0.5)","rgba(59,51,112,0.5)"];
-let borderChartColors = ["rgba(36,222,234,1)","rgba(104,234,75,1)","rgba(27,137,155,1)","rgba(12,189,176,1)","rgba(149,176,73,1)","rgba(137,161,114,1)","rgba(86,88,168,1)","rgba(152,165,28,1)","rgba(57,82,111,1)","rgba(70,63,146,1)","rgba(122,57,0,1)","rgba(36,146,124,1)","rgba(205,34,126,1)","rgba(111,148,24,1)","rgba(57,35,209,1)","rgba(39,227,35,1)","rgba(22,137,116,1)","rgba(124,53,202,1)","rgba(16,66,187,1)","rgba(59,51,112,1)"];
+let backgroundChartColors =["rgba(255,0,0,0.5)","rgba(0,255,0,0.5)","rgba(0,0,255,0.5)","rgba(12,189,176,0.5)","rgba(149,176,73,0.5)","rgba(137,161,114,0.5)","rgba(86,88,168,0.5)","rgba(152,165,28,0.5)","rgba(57,82,111,0.5)","rgba(70,63,146,0.5)","rgba(122,57,0,0.5)","rgba(36,146,124,0.5)","rgba(205,34,126,0.5)","rgba(111,148,24,0.5)","rgba(57,35,209,0.5)","rgba(39,227,35,0.5)","rgba(22,137,116,0.5)","rgba(124,53,202,0.5)","rgba(16,66,187,0.5)","rgba(59,51,112,0.5)"];
+let borderChartColors = ["rgba(255,0,0,1)","rgba(0,255,0,1)","rgba(0,0,255,1)"  ,"rgba(12,189,176,1)","rgba(149,176,73,1)","rgba(137,161,114,1)","rgba(86,88,168,1)","rgba(152,165,28,1)","rgba(57,82,111,1)","rgba(70,63,146,1)","rgba(122,57,0,1)","rgba(36,146,124,1)","rgba(205,34,126,1)","rgba(111,148,24,1)","rgba(57,35,209,1)","rgba(39,227,35,1)","rgba(22,137,116,1)","rgba(124,53,202,1)","rgba(16,66,187,1)","rgba(59,51,112,1)"];
 
 
 function download(type) {
@@ -34,8 +39,26 @@ function download(type) {
         dl.download="Chart.png";
         dl.href=img;
     }
-    if(type==="CSV") {
+    if (type === "CSV") {
+        var str = '';
 
+        for (var i = 0; i < means.length; i++) {
+            var line = '';
+            for (var index in means[i]) {
+                if (line != '') line += ','
+
+                line += means[i][index];
+            }
+
+            str += line + '\r\n';
+        }
+
+        if (navigator.appName != 'Microsoft Internet Explorer') {
+            window.open('data:text/csv;charset=utf-8,' + escape(str));
+        }
+        else {
+            window.open('data:text / csv; charset = utf - 8; base64, ' + $.base64Encode(output));
+        }     
     }
     dl.click();
     document.body.removeChild(dl);
@@ -159,6 +182,7 @@ function getDataAndCreateChart(){
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+
         document.getElementById("chart").remove(); 
         div = document.querySelector("#chart-container");
         document.getElementById("exportPNG").style.display="inline";
@@ -166,27 +190,33 @@ function getDataAndCreateChart(){
         document.getElementById("exportSVG").style.display="inline";
         div.insertAdjacentHTML("afterbegin", "<canvas id='chart'></canvas>");
         let scores = JSON.parse(this.responseText);
-        let countries = [];
-        let means = [];
+        countries = [];
+        means = [];
         for(let i of Object.keys(scores) )
         {
             means.push(scores[i]["MEAN"]);
             countries.push(scores[i]["Country"]);
         }
         const ctx = document.getElementById("chart").getContext('2d');
-        const graphData={
+        let graphData = {};
+        if(chartType == 'bar')
+        { 
+            graphData={
             type: chartType,
             data: {
                 labels: countries,
                 datasets: [{
-                    label: 'PISA Test Scores',
                     data: means,
                     backgroundColor: backgroundChartColors,
                     borderColor: borderChartColors,
                     borderWidth: 1
                 }]
+
             },
-            options: {
+            options:{
+                legend:{
+                    display:false
+                },
                 scales: {
                     yAxes: [{
                         ticks: {
@@ -196,8 +226,71 @@ function getDataAndCreateChart(){
                 }
             }
         }
+<<<<<<< HEAD
         data=graphData;
         graphData.options.responsive=false;
+=======
+        }
+        else if(chartType == 'points')
+        {
+            graphData={
+                type: 'line',
+                data: {
+                    labels: "PisaTestResults",
+                    datasets: []
+                },
+                options:{
+                    legend:{
+                        display:true
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                min:0,
+                                max:600
+                            }
+                        }]
+                    }
+                }
+            }
+            for(let i=0;i<means.length;i++)
+            {
+                graphData.data.datasets.push({
+                    label: countries[i],
+                    data: [null, null, null, null,null, null, null, means[i]],
+                    borderColor:borderChartColors[i],
+                    borderWidth:10
+                })
+            }
+        }
+        else if(chartType == 'polarArea')
+        {
+            graphData = {
+                type:'polarArea',
+                data: {
+                    labels: countries,
+                    datasets:[{
+                        data:means,
+                        backgroundColor:backgroundChartColors,
+                        borderColor: borderChartColors
+                    }]
+                },
+                options:{
+                    scale:{
+                        ticks: {
+                            min:300,
+                            max:580
+                        }
+                    }
+                }
+            }
+        }
+           
+
+        graphData.options.responsive=false;
+        data=graphData;
+        console.log(graphData);
+>>>>>>> 8ec9d2b33855626f2cade7740c5e9e5845f258c5
         const chart = new Chart(ctx, graphData);
 
 
@@ -216,11 +309,11 @@ window.onload = function ()
         getDataAndCreateChart();
     });
     document.getElementById("button-point").addEventListener("click", function(){
-        chartType="line";
+        chartType="points";
         getDataAndCreateChart();
     });
-    document.getElementById("button-scatter").addEventListener("click", function(){
-        chartType="scatter";
+    document.getElementById("button-polar").addEventListener("click", function(){
+        chartType="polarArea";
         getDataAndCreateChart();
     });
     document.getElementById("exportPNG").addEventListener("click", function(){
@@ -239,7 +332,7 @@ window.onload = function ()
             numberOfCountries += 1;
             const countriesForm = document.getElementById("country-choice");
             countriesForm.insertAdjacentHTML("beforeend",
-            "<select id=\"c".concat(numberOfCountries).concat("\" name=\"c").concat(numberOfCountries).concat("\"><option value=\"Romania\"> Romania </option><option value=\"Albania\"> Albania </option><option value=\"Argentina\"> Argentina </option><option value=\"Australia\"> Australia </option><option value=\"Austria\"> Austria </option><option value=\"B-S-J-Z (China)\"> China </option><option value=\"Baku (Azerbaijan)\"> Azerbaijan </option><option value=\"Belarus\"> Belarus </option><option value=\"Belgium\"> Belgium </option><option value=\"Bosnia and Herzegovina\"> Bosnia and Herzegovina </option><option value=\"Brazil\"> Brazil </option><option value=\"Brunei Darussalam\"> Brunei </option><option value=\"Austria\"> Austria </option><option value=\"Bulgaria\"> Bulgaria </option><option value=\"Canada\"> Canada </option><option value=\"Chile\"> Chile </option><option value=\"Chinese Taipei\"> Chinese Taipei </option><option value=\"Colombia\"> Colombia </option><option value=\"Costa Rica\"> Costa Rica </option><option value=\"Croatia\"> Croatia </option><option value=\"Cyprus\"> Cyprus </option><option value=\"Czech Republic\"> Czech Republic </option><option value=\"Denmark\"> Denmark </option><option value=\"Dominican Republic\"> Dominican Republic </option><option value=\"Estonia\"> Estonia </option><option value=\"Finland\"> Finland </option><option value=\"France\"> France </option><option value=\"Georgia\"> Georgia </option><option value=\"Germany\"> Germany </option><option value=\"Greece\"> Greece </option><option value=\"Hong Kong (China)*\"> Hong Kong (China) </option><option value=\"Hungary\"> Hungary </option><option value=\"Iceland\"> Iceland </option><option value=\"Indonesia\"> Indonesia </option><option value=\"Ireland\"> Ireland </option><option value=\"Israel\"> Israel </option><option value=\"Italy\"> Italy </option><option value=\"Japan\"> Japan </option><option value=\"Jordan\"> Jordan </option><option value=\"Kazakhstan\"> Kazakhstan </option><option value=\"Korea\"> Korea </option><option value=\"Kosovo\"> Kosovo </option><option value=\"Latvia\"> Latvia </option><option value=\"Lebanon\"> Lebanon </option><option value=\"Lithuania\"> Lithuania </option><option value=\"Luxembourg\"> Luxembourg </option><option value=\"Macao (China)\"> Macao (China) </option><option value=\"Malaysia\"> Malaysia </option><option value=\"Malta\"> Malta </option><option value=\"Mexico\"> Mexico </option><option value=\"Moldova\"> Moldova </option><option value=\"Montenegro\"> Montenegro </option><option value=\"Netherlands*\"> Netherlands </option><option value=\"New Zealand\"> New Zealand </option><option value=\"North Macedonia\"> North Macedonia </option><option value=\"OECD average\"> OECD average </option><option value=\"Panama\"> Panama </option><option value=\"Peru\"> Peru </option><option value=\"Philippines\"> Philippines </option><option value=\"Poland\"> Poland </option><option value=\"Portugal*\"> Portugal </option><option value=\"Qatar\"> Qatar </option><option value=\"Russia\"> Russia </option><option value=\"Saudi Arabia\"> Saudi Arabia </option><option value=\"Serbia\"> Serbia </option><option value=\"Singapore\"> Singapore </option><option value=\"Slovak Republic\"> Slovak Republic </option><option value=\"Slovenia\"> Slovenia </option><option value=\"Spain\"> Spain </option><option value=\"Sweeden\"> Sweeden </option><option value=\"Switzerland\"> Switzerland </option><option value=\"Thailand\"> Thailand </option><option value=\"Turkey\"> Turkey </option><option value=\"Ukraine\"> Ukraine </option><option value=\"United Arab Emirates\"> United Arab Emirates </option><option value=\"United Kingdom\"> United Kingdom </option><option value=\"United States*\"> United States </option><option value=\"Uruguay\"> Uruguay </option><option value=\"Viet Nam\"> Viet Nam </option></select>")
+            "<select id=\"c".concat(numberOfCountries).concat("\" name=\"c").concat(numberOfCountries).concat("\"><option value=\"Romania\"> Romania </option><option value=\"Albania\"> Albania </option><option value=\"Argentina\"> Argentina </option><option value=\"Australia\"> Australia </option><option value=\"Austria\"> Austria </option><option value=\"B-S-J-Z (China)\"> China </option><option value=\"Baku (Azerbaijan)\"> Azerbaijan </option><option value=\"Belarus\"> Belarus </option><option value=\"Belgium\"> Belgium </option><option value=\"Bosnia and Herzegovina\"> Bosnia and Herzegovina </option><option value=\"Brazil\"> Brazil </option><option value=\"Brunei Darussalam\"> Brunei </option><option value=\"Austria\"> Austria </option><option value=\"Bulgaria\"> Bulgaria </option><option value=\"Canada\"> Canada </option><option value=\"Chile\"> Chile </option><option value=\"Chinese Taipei\"> Chinese Taipei </option><option value=\"Colombia\"> Colombia </option><option value=\"Costa Rica\"> Costa Rica </option><option value=\"Croatia\"> Croatia </option><option value=\"Cyprus\"> Cyprus </option><option value=\"Czech Republic\"> Czech Republic </option><option value=\"Denmark\"> Denmark </option><option value=\"Dominican Republic\"> Dominican Republic </option><option value=\"Estonia\"> Estonia </option><option value=\"Finland\"> Finland </option><option value=\"France\"> France </option><option value=\"Georgia\"> Georgia </option><option value=\"Germany\"> Germany </option><option value=\"Greece\"> Greece </option><option value=\"Hong Kong (China)*\"> Hong Kong (China) </option><option value=\"Hungary\"> Hungary </option><option value=\"Iceland\"> Iceland </option><option value=\"Indonesia\"> Indonesia </option><option value=\"Ireland\"> Ireland </option><option value=\"Israel\"> Israel </option><option value=\"Italy\"> Italy </option><option value=\"Japan\"> Japan </option><option value=\"Jordan\"> Jordan </option><option value=\"Kazakhstan\"> Kazakhstan </option><option value=\"Korea\"> Korea </option><option value=\"Kosovo\"> Kosovo </option><option value=\"Latvia\"> Latvia </option><option value=\"Lebanon\"> Lebanon </option><option value=\"Lithuania\"> Lithuania </option><option value=\"Luxembourg\"> Luxembourg </option><option value=\"Macao (China)\"> Macao (China) </option><option value=\"Malaysia\"> Malaysia </option><option value=\"Malta\"> Malta </option><option value=\"Mexico\"> Mexico </option><option value=\"Moldova\"> Moldova </option><option value=\"Montenegro\"> Montenegro </option><option value=\"Netherlands*\"> Netherlands </option><option value=\"New Zealand\"> New Zealand </option><option value=\"North Macedonia\"> North Macedonia </option><option value=\"OECD average\"> OECD average </option><option value=\"Panama\"> Panama </option><option value=\"Peru\"> Peru </option><option value=\"Philippines\"> Philippines </option><option value=\"Poland\"> Poland </option><option value=\"Portugal*\"> Portugal </option><option value=\"Qatar\"> Qatar </option><option value=\"Russia\"> Russia </option><option value=\"Saudi Arabia\"> Saudi Arabia </option><option value=\"Serbia\"> Serbia </option><option value=\"Singapore\"> Singapore </option><option value=\"Slovak Republic\"> Slovak Republic </option><option value=\"Slovenia\"> Slovenia </option><option value=\"Spain\"> Spain </option><option value=\"Sweden\"> Sweden </option><option value=\"Switzerland\"> Switzerland </option><option value=\"Thailand\"> Thailand </option><option value=\"Turkey\"> Turkey </option><option value=\"Ukraine\"> Ukraine </option><option value=\"United Arab Emirates\"> United Arab Emirates </option><option value=\"United Kingdom\"> United Kingdom </option><option value=\"United States*\"> United States </option><option value=\"Uruguay\"> Uruguay </option><option value=\"Viet Nam\"> Viet Nam </option></select>")
             )
             document.getElementById("c".concat(numberOfCountries)).addEventListener("change", checkIfRomaniaAndGetData);
             
@@ -256,8 +349,6 @@ window.onload = function ()
         }
     });
     
-
-
     document.getElementById("indicator-combo-box").addEventListener("change", getDataAndCreateChart);
     document.getElementById("gender-combo-box").addEventListener("change", getDataAndCreateChart);
     document.getElementById("wealth-combo-box").addEventListener("change", this.getDataAndCreateChart);
@@ -268,4 +359,5 @@ window.onload = function ()
     document.getElementById("age_16").addEventListener('change', getDataAndCreateChart);
 
     this.checkIfRomaniaAndGetData();
+
 }
