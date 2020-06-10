@@ -63,6 +63,13 @@ elseif(strpos($currController,"Login.php") !== false)
 elseif(strpos($currController,"Admin.php") !== false)
 {
     $controller = new AdminController();
-    Route::run($currController);
+    if(!isset($_COOKIE["user"]) or !isset($_COOKIE["uuid"]))
+    {
+        header("location:Login.php");
+    }
+    else
+    {
+        Route::run($currController);
+    }
 }
 ?>

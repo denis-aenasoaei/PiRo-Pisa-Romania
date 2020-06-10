@@ -287,7 +287,6 @@ function getDataAndCreateChart(){
 
         graphData.options.responsive=false;
         data=graphData;
-        console.log(graphData);
         const chart = new Chart(ctx, graphData);
 
 
@@ -296,6 +295,7 @@ function getDataAndCreateChart(){
     }
     xmlhttp.open("GET", "http://127.0.0.1/PIRO-PISA-ROMANIA/Results.php?".concat(query), true);
     xmlhttp.send();
+
 
 }
 

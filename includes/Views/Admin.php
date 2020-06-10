@@ -1,11 +1,3 @@
-<?php
-
-if(!isset($_COOKIE["user"]) or !isset($_COOKIE["uuid"]))
-{
- header("location:Login.php");
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,45 +14,6 @@ if(!isset($_COOKIE["user"]) or !isset($_COOKIE["uuid"]))
 <body>
     <header>
         <div class="header-area">
-            <div class="header-logo">
-                <picture>
-                    <img src="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/OECD.png" title="OECD">
-                </picture>
-            </div>
-            <div class="header-social">
-                <ul id="socials">
-                    <li>
-                        <a href="https://www.facebook.com/OECDEduSkills" title="Facebook">
-                            <i class="fa fa-facebook">
-                            </i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.youtube.com/user/EDUContact" title="Youtube">
-                            <i class="fa fa-youtube">
-                            </i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://oecdedutoday.com/" title="Blogs">
-                            <i class="fa fa-envelope">
-                            </i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/hashtag/oecdpisa" title="Twitter">
-                            <i class="fa fa-twitter">
-                            </i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="top_banner">
-            <picture>
-                <img src="http://127.0.0.1/PIRO-PISA-ROMANIA/Images/Home/banner_top.png" title="PISA">
-            </picture>
-        </div>
         <nav>
             <div class="nav-sticky">
                 <div class="nav-menu">
@@ -79,11 +32,49 @@ if(!isset($_COOKIE["user"]) or !isset($_COOKIE["uuid"]))
             </div>
         </nav>
     </header>
-
     <main>
-        <h1>Welcome back, <?php echo $_COOKIE["user"];?></h1>
-        <div> lemne</div>
-        <button id="logout">Logout</button>
+        <h1 id="title">DASHBOARD</h1>
+        <div class="admin-navigation">  
+            <button id="modify-table-data" class="admin-nav-button"> Modify table data </button>
+            <button id="placeholder1" class="admin-nav-button"> placeholder </button>
+            <button id="placeholder2" class="admin-nav-button"> placeholder </button> 
+        </div>
+        <div class="admin-actions">
+            <div class="modify-table">
+                    <form id="table-selection">
+                        <label for="table-name"> Table Name: </label>
+                        <select name="table-name" id="table-name">
+                            <option value="Administrators"> Administrators </option>
+                            <option value="romania_data"> Data from romania </option>
+                            <option value="country_scores"> Data from other countries </option>
+                        </select>
+                        <label for="action-type">Action: </label>
+                        <select name="action-type" id="action-type">
+                            <option value="add"> Add row </option>
+                            <option value="update">Update a row </option>
+                            <option value="delete">Delete a row </option>
+                        </select>
+                    </form>
+
+                    <form id="add-country">
+                        <label for="country">Country name </label>
+                        <input type="text" name="country">
+                        <br>
+                        <label for="math">Math Score </label>
+                        <input type="text" name="math">
+                        <br>
+                        <label for="scie">Science Score </label>
+                        <input type="text" name="scie">
+                        <br>
+                        <label for="read">Reading score </label>
+                        <input type="text" name="read">
+                    </form>
+                        
+            </div>
+        </div>
+        <div class="logout-wrapper">
+            <button id="logout">Logout</button>
+        </div>
     </main>
 </body>
 </html>

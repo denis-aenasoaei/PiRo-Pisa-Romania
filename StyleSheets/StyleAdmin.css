@@ -4,7 +4,6 @@ main {
     margin: auto;
     border: 1px solid #f49600;
     border-radius: 10px;
-    display: grid;
     justify-content: center;
     text-align: center;
     color: darkblue;
@@ -16,15 +15,18 @@ form {
     border-style: solid;
     border-width: 0.05em;
     border-radius: 2em;
-    height: 100%;
-    flex-wrap: wrap;
-    flex-direction: column;
     align-items: center;
-    align-content: space-around;
     margin: 0.2em;
     background-color: #3696af;
 }
 
+main {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 15% 10% 65% 10%;
+    size:auto;
+    
+}
 main p {
     font-size: 1.2em;
     font-weight: bold;
@@ -50,4 +52,41 @@ main p {
 .loginButton:hover {
     background-color:bisque;
     color:blue;
+}
+
+#title{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row:1
+}
+
+.admin-navigation{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row:2;
+    justify-content: center;
+}
+
+.admin-actions{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row:3;
+    justify-content: center;
+    display:block;
+    width: 100%;
+    height: 100%;
+}
+
+.logout-wrapper{
+    grid-column: 2;
+    grid-row:4;
+    justify-content: center;
+}
+
+#logout {
+    size:33%;
+}
+
+.hidden {
+    display:none;
 }
