@@ -7,7 +7,6 @@ class AdminController extends Controller{
         $this->model = new AdminModel();
     }
 
-    
 
 }
 
