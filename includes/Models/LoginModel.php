@@ -7,17 +7,29 @@ class LoginModel{
         $this->connection = Database::getConnection();
     }
     public function checkCredentials($user,$pass){
-        $sql="SELECT * FROM administrators WHERE user=? and password=?";
+        $sql="SELECT password FROM administrators WHERE user=:user";
         $request = $this->connection->prepare($sql);
-        $request->bindParam(1, $user);
-        $request->bindParam(2, $pass);
+        $request->bindValue(':user', $user);
         if(!$request->execute())
+        {
             return false;
-        $request=$request->fetch();
-        if(empty($request))
+        }
+        $line=$request->fetch(\PDO::FETCH_ASSOC);
+        if(empty($line))
+        {
             return false;
+        }
         else
-            return true;
+        {
+            if(password_verify($pass, $line["password"]))
+            {
+               return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
     public function checkUUID($uuid,$user){
         $sql="SELECT * FROM sessions WHERE key_id=? and user=?";
