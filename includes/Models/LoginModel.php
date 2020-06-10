@@ -10,6 +10,7 @@ class LoginModel{
         $sql="SELECT password FROM administrators WHERE user=:user";
         $request = $this->connection->prepare($sql);
         $request->bindValue(':user', $user);
+
         if(!$request->execute())
         {
             return false;
