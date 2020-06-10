@@ -226,10 +226,8 @@ function getDataAndCreateChart(){
                 }
             }
         }
-<<<<<<< HEAD
         data=graphData;
         graphData.options.responsive=false;
-=======
         }
         else if(chartType == 'points')
         {
@@ -290,7 +288,6 @@ function getDataAndCreateChart(){
         graphData.options.responsive=false;
         data=graphData;
         console.log(graphData);
->>>>>>> 8ec9d2b33855626f2cade7740c5e9e5845f258c5
         const chart = new Chart(ctx, graphData);
 
 
