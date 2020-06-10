@@ -1,3 +1,6 @@
+header{
+    margin-top: 10px;
+}
 main {
     grid-row:2;
     min-height: 600px;
