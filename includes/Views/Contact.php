@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <html lang="en-US">
 <head>
-    <link rel="stylesheet" type="text/css" href="StyleSheets/style.css">
     <link rel="stylesheet" type="text/css" href="StyleSheets/StyleContact.css">
+    <link rel="stylesheet" type="text/css" href="StyleSheets/style.css">
     <link rel="icon" href="Images/Home/oecd_logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
