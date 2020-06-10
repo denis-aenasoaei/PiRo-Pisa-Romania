@@ -3,6 +3,7 @@
     <head>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.bundle.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="Scripts/canvas2svg.js"></script>
         <script src="Scripts/resultsScript.js"></script>
         <link rel="stylesheet" type="text/css" href="StyleSheets/style.css">
         <link rel="stylesheet" type="text/css" href="StyleSheets/StyleResults.css">
@@ -223,9 +224,9 @@
                 </div>
 
                 <div class="options-area">
-                    <button class="options-button" id="exportPNG"  onclick="download('PNG')"> Export PNG</button>
-                    <button class="options-button" id="exportSVG" onclick="download('SVG')"> Export SVG</button>
-                    <button class="options-button" id="exportCSV" onclick="download('CSV')"> Export CSV</button>
+                    <button class="options-button" id="exportPNG"> Export PNG</button>
+                    <button class="options-button" id="exportSVG"> Export SVG</button>
+                    <button class="options-button" id="exportCSV"> Export CSV</button>
                     <button class="chart-type-button" id="button-barchart"> Bar Chart </button>
                     <button class="chart-type-button" id="button-point"> Points Chart </button>
                     <button class="chart-type-button" id="button-scatter"> Scatter Chart </button>

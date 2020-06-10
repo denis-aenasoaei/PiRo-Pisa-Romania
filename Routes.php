@@ -12,4 +12,11 @@ Route::add("Contact.php", function(){
     ContactUsController::createView('Contact.php');
 });
 
+Route::add("Login.php",function(){
+    LoginController::createView('Login.php');
+});
+
+Route::add("Admin.php",function(){
+    AdminController::createView('Admin.php');
+});
 ?>

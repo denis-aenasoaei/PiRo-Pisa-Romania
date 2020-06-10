@@ -1212,7 +1212,6 @@
     }
 
 }());
-
 function tweakLib(){
     C2S.prototype.getContext = function (contextId) {
         if (contextId=="2d" || contextId=="2D") {

@@ -55,13 +55,13 @@
                 <div class="nav-sticky">
                     <div class="nav-menu">
                         <ul id="navigation">
-                            <a href="Index.php"><li>
+                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Index.php"><li>
                                 Home
                             </li></a>
-                            <a href="Results.php"><li>
+                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Results.php"><li>
                                 Results
                             </li></a>
-                            <a href="Contact.php"><li>
+                            <a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Contact.php"><li>
                                 Contact
                             </li></a>
                         </ul>
@@ -206,7 +206,7 @@
         </main>
         <footer>
             <hr>
-            <p>@ 2020</p>
+            <p><a href="http://127.0.0.1/PIRO-PISA-ROMANIA/Login.php">@ 2020</a></p>
         </footer>
     </body>
 </html>

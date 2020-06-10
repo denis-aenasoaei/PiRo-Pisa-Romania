@@ -44,7 +44,6 @@ elseif(strpos($currController,"Results.php") !== false)
 }
 elseif(strpos($currController,"Contact.php") !== false)
 {
-    
     $controller = new ContactUsController();
     if($method === "POST")
     {
@@ -52,5 +51,18 @@ elseif(strpos($currController,"Contact.php") !== false)
     }
     Route::run($currController);
 }
-
+elseif(strpos($currController,"Login.php") !== false)
+{
+    $controller = new LoginController();
+    if($method === "POST")
+    {
+        $controller->Login();
+    }
+    Route::run($currController);
+}
+elseif(strpos($currController,"Admin.php") !== false)
+{
+    $controller = new AdminController();
+    Route::run($currController);
+}
 ?>

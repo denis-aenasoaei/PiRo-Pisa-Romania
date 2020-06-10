@@ -6,17 +6,13 @@ let borderChartColors = ["rgba(36,222,234,1)","rgba(104,234,75,1)","rgba(27,137,
 
 
 function download(type) {
-    var graphData=data;
-    graphData.options.animation=false;
-    graphData.options.responsive=false;
-
-    const ctx = document.getElementById("chart");
+    data.options.animation=false;
+    console.log(data);
+    var ctx = document.getElementById("chart");
     var width=ctx.getBoundingClientRect().width;
     var height=ctx.getBoundingClientRect().height;
-    const svgContext = C2S(width,height);
-    const mySvg = new Chart(svgContext, graphData);
-    mySvg.width=width;
-    mySvg.height=height;
+    var svgContext = C2S(width,height);
+    var mySvg = new Chart(svgContext, data);
 
     var dl = document.createElement("a");
     document.body.appendChild(dl); // This line makes it work in Firefox.
@@ -30,7 +26,6 @@ function download(type) {
             svgString = oSerializer.serializeToString(svg);
         }
         dl.download = "Chart.svg";
-        //   return "data:image/svg+xml," + encodeURIComponent(svgAsXML);
         dl.href = 'data:image/svg+xml;utf8,' + encodeURIComponent(svgString);
     }
     if(type==="PNG") {
@@ -201,10 +196,11 @@ function getDataAndCreateChart(){
                 }
             }
         }
-
-        graphData.options.responsive=false;
         data=graphData;
+        graphData.options.responsive=false;
         const chart = new Chart(ctx, graphData);
+
+
 
     }
     }
@@ -226,6 +222,15 @@ window.onload = function ()
     document.getElementById("button-scatter").addEventListener("click", function(){
         chartType="scatter";
         getDataAndCreateChart();
+    });
+    document.getElementById("exportPNG").addEventListener("click", function(){
+        download("PNG");
+    });
+    document.getElementById("exportSVG").addEventListener("click", function(){
+        download("SVG");
+    });
+    document.getElementById("exportCSV").addEventListener("click", function(){
+        download("CSV");
     });
 
     document.getElementById("btn-add-country").addEventListener("click", function(){
