@@ -40,16 +40,12 @@ function download(type) {
         dl.href=img;
     }
     if (type === "CSV") {     
-       // countries = [];
-        //means = [];
-        csv = "Country,Mean \r\n";
+        csv = "Country,Mean" + document.getElementById("indicator-combo-box").value.charAt(0).toUpperCase() + document.getElementById("indicator-combo-box").value.substr(1)  + "\r\n";
         for (var i = 0; i < countries.length; i++) {
-            csv += countries[i].concat(",").concat(means[i]).concat("r\n");
+            csv += countries[i].concat(",").concat(means[i]).concat("\r\n");
         }
        dl.download = "Chart.csv";
-        dl.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
-   
-        
+        dl.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv); 
     }
     dl.click();
     document.body.removeChild(dl);
@@ -92,15 +88,15 @@ function getDataAndCreateChart(){
     let query='';
     let currentCountry = document.getElementById("c1");
     let i=1;
-    let countries='';
+    let countriesStr='';
     while(currentCountry)
     {
-        countries += "c".concat(i).concat("=").concat(currentCountry.options[currentCountry.selectedIndex].value.concat("&"));
+        countriesStr += "c".concat(i).concat("=").concat(currentCountry.options[currentCountry.selectedIndex].value.concat("&"));
         i += 1;
         currentCountry = document.getElementById("c".concat(i));
     }
 
-    query += countries;
+    query += countriesStr;
 
     let age15 = document.getElementById("age_15");
     let age16 = document.getElementById("age_16");
