@@ -22,7 +22,7 @@ class AdminModel{
     
     public function deleteCountry($country){
     
-        $sql="DELETE * FROM country_scores where Country=(?)";
+        $sql="DELETE FROM country_scores where Country=(?)";
         $request = $this->connection->prepare($sql);
         $request->bindParam(1, $country);
         if(!$request->execute())
@@ -60,7 +60,7 @@ class AdminModel{
     }
     public function deleteUser($user){
 
-        $sql="DELETE * FROM administrators where user=(?)";
+        $sql="DELETE FROM administrators where user=(?)";
         $request = $this->connection->prepare($sql);
         $request->bindParam(1, $user);
         if(!$request->execute())
@@ -91,7 +91,7 @@ class AdminModel{
 
     public function deleteStudent($idStudent){
 
-        $sql="DELETE * from romania_data where STUD_ID=(?)";
+        $sql="DELETE from romania_data where STUD_ID=(?)";
         $request = $this->connection->prepare($sql);
         $request->bindParam(1, $idStudent);
         if(!$request->execute())
