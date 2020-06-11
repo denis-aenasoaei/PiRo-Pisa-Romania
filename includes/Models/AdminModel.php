@@ -33,14 +33,14 @@ class AdminModel{
     public function updateGrade(){
 
     }
-    public function insertCountry($country,$readGrade,$mathGrade,$scienceGrade){
+    public function insertCountry($country,$readMean,$mathMean,$scienceMean){
 
         $sql="INSERT into country_scores (`Country`,`READ_MEAN`,`MATH_MEAN`,`SCIE_MEAN`) values(?,?,?,?) ";
         $request = $this->connection->prepare($sql);
         $request->bindParam(1, $country);
-        $request->bindParam(2, $readGrade);
-        $request->bindParam(3, $mathGrade);
-        $request->bindParam(4, $scienceGrade);
+        $request->bindParam(2, $readMean);
+        $request->bindParam(3, $mathMean);
+        $request->bindParam(4, $scienceMean);
         if(!$request->execute())
             return false;
         return true;
