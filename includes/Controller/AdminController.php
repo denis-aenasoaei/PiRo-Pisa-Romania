@@ -77,6 +77,7 @@ class AdminController extends Controller{
                 }
                 if (empty($password)) {
                     $err[]="Password expected";
+                }
                 if ( count( $err ) == 0 ) {
                     $this->model->insertUser($usern,$password);   
                     } 
