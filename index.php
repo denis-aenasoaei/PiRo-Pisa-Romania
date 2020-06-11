@@ -74,6 +74,7 @@ elseif(strpos($currController,"Admin.php") !== false)
             Route::run($currController);
         }
         else{
+            $controller->treat();
             //request is made from XHR 
             //TREAT THE REQUEST
             //se trimite DELETE pentru a sterge ceva
