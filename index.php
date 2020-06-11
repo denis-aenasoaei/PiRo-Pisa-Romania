@@ -69,7 +69,23 @@ elseif(strpos($currController,"Admin.php") !== false)
     }
     else
     {
-        Route::run($currController);
+        if($method === "GET")
+        {
+            Route::run($currController);
+        }
+        else{
+            //request is made from XHR 
+            //TREAT THE REQUEST
+            //se trimite DELETE pentru a sterge ceva
+            //se trimite PUT pentru a face update la ceva
+            //se trimite POST pentru a adauga ceva
+            //pentru a accesa valorile din request PUT si request DELETE poti folosi array-ul $_REQUEST la fel ca in $_GET
+            
+
+            //http_response_code(404);
+            //http_response_code(200);
+        }
+
     }
 }
 ?>

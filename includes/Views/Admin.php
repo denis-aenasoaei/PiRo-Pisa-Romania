@@ -72,8 +72,8 @@
                         </select>
                         <label for="input6" class="hidden" id="LB_input6"> School Grade </label>
                         <select name="input6" class="hidden" id="input6">
-                            <option value="10"> Female </option>
-                            <option value="11"> Male </option>
+                            <option value="10"> Grade 10 </option>
+                            <option value="11"> Grade 11 </option>
                         </select>
                         <label for="input7" class="hidden" id="LB_input7"> Age </label>
                         <select name="input7" class="hidden" id="input7">

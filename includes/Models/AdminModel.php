@@ -36,7 +36,7 @@ class AdminModel{
     }
     public function insertCountry($country,$readGrade,$mathGrade,$scienceGrade){
 
-        $sql="INSERT into country_scores (`Country`,`READ_MEAN`,`MATH_MEAN`,`SCIE_MEAN`) values(?,?,?,?) "
+        $sql="INSERT into country_scores (`Country`,`READ_MEAN`,`MATH_MEAN`,`SCIE_MEAN`) values(?,?,?,?) ";
         $request = $this->connection->prepare($sql);
         $request->bindParam(1, $country);
         $request->bindParam(2, $readGrade);
@@ -48,7 +48,7 @@ class AdminModel{
       
     }
     public function insertUser($user,$passwd){ 
-        $sql="INSERT into administrators (`user`,`password`) values(?,?) "
+        $sql="INSERT into administrators (`user`,`password`) values(?,?) ";
         $request = $this->connection->prepare($sql);
         $request->bindParam(1, $user);
         $request->bindParam(2, $passwd);
@@ -72,7 +72,7 @@ class AdminModel{
 
     public function insertStudent($idStud,$mathGrade,$readGrade,$scienceGrade,$gen,$schoolGrade,$age,$wealth){
 
-        $sql="INSERT into romania_data (`STUD_ID`,`READ_MEAN`,`MATH_MEAN`,`SCIE_MEAN`,`GENDER`,`SCHOOL_GRADE`,`AGE`,`WEALTH_RANGE`) values(?,?,?,?,?,?,?,?) "
+        $sql="INSERT into romania_data (`STUD_ID`,`READ_MEAN`,`MATH_MEAN`,`SCIE_MEAN`,`GENDER`,`SCHOOL_GRADE`,`AGE`,`WEALTH_RANGE`) values(?,?,?,?,?,?,?,?) ";
         $request = $this->connection->prepare($sql);
         $request->bindParam(1, $idStud);
         $request->bindParam(2, $readGrade);
