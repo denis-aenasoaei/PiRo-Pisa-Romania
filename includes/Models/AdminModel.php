@@ -26,9 +26,8 @@ class AdminModel{
         $request = $this->connection->prepare($sql);
         $request->bindParam(1, $country);
         if(!$request->execute())
-        return false;
-        $request=$request->fetch();
-      
+            return false;
+        return true;
     }
 
     public function updateGrade(){
@@ -43,20 +42,19 @@ class AdminModel{
         $request->bindParam(3, $mathGrade);
         $request->bindParam(4, $scienceGrade);
         if(!$request->execute())
-        return false;
-        $request=$request->fetch();
-      
+            return false;
+        return true;
+
     }
     public function insertUser($user,$passwd){ 
         $sql="INSERT into administrators (`user`,`password`) values(?,?) ";
         $request = $this->connection->prepare($sql);
         $request->bindParam(1, $user);
-        $request->bindParam(2, $passwd);
+        $request->bindParam(2, password_hash($passwd, PASSWORD_DEFAULT));
         if(!$request->execute())
-        return false;
-        $request=$request->fetch();
-       
-
+           return false;    
+        return true;
+ 
     }
     public function deleteUser($user){
 
@@ -64,10 +62,9 @@ class AdminModel{
         $request = $this->connection->prepare($sql);
         $request->bindParam(1, $user);
         if(!$request->execute())
-        return false;
-        $request=$request->fetch();
-       
-
+            return false;
+        return true;
+        
     }
 
     public function insertStudent($idStud,$mathGrade,$readGrade,$scienceGrade,$gen,$schoolGrade,$age,$wealth){
@@ -83,9 +80,8 @@ class AdminModel{
         $request->bindParam(7, $age);
         $request->bindParam(8, $wealth);
         if(!$request->execute())
-        return false;
-        $request=$request->fetch();
-
+            return false;
+        return true;
 
     }
 
@@ -95,15 +91,46 @@ class AdminModel{
         $request = $this->connection->prepare($sql);
         $request->bindParam(1, $idStudent);
         if(!$request->execute())
-        return false;
-        $request=$request->fetch();
-
+            return false;
+        return true;
     }
 
-    /*public function updateStud($idStud1){
-        $sql="UPDATE romania_data SET "
+    public function updateStud($idStud1, $values){
+        $sql="UPDATE romania_data SET ";
 
-    }*/
+        foreach($values as $k=>$v)
+        {
+            $sql = $sql . $k . "=? , ";
+        }
+
+        $sql = rtrim($sql, ", ");
+
+        $sql .= " where stud_id=?";
+
+        $request = $this->connection->prepare($sql);
+
+        $i = 1;
+        foreach($values as $k=>$v)
+        {
+            echo $k;
+            echo $v;
+            if($k == "wealth_range")
+                $request->bindValue($i, $v, PDO::PARAM_INT);
+            else{
+                $request->bindValue($i, $v);
+            }
+            $i += 1;
+        }
+
+
+        $request->bindParam($i, $id_stud1, PDO::PARAM_INT);
+
+
+        if(!$request->execute())
+            return false;
+        return true;
+
+    }
 
 }
 ?>

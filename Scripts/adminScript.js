@@ -45,9 +45,6 @@ function sendRequest(){
         }
         else if(method === 'PUT' ||  method === 'POST')
         {
-            console.log(document.getElementById("input2").value);
-            console.log(document.getElementById("input3").value);
-            console.log(document.getElementById("input4").value);
             if(document.getElementById("input2").value.length > 0)
                 queryString = queryString.concat("&read=").concat(document.getElementById("input2").value); 
             if(document.getElementById("input3").value.length > 0)
@@ -81,7 +78,7 @@ function sendRequest(){
         if (this.readyState == 4) {
             if(this.status == 200)
             {
-                alert("SUCCESS!");
+                console.log(xmlhttp.responseText);
             }
             else
             {
@@ -150,7 +147,10 @@ window.onload = function () {
                 document.getElementById("LB_input8").classList.remove("hidden");
                 
                 document.getElementById("input2").classList.remove("hidden");
-                document.getElementById("LB_input2").classList.remove("hidden");    
+                document.getElementById("LB_input2").classList.remove("hidden"); 
+                
+                document.getElementById("input2").type = "text";
+                   
                 
                 document.getElementById("LB_input1").innerHTML = " Id student: ";
                 document.getElementById("LB_input2").innerHTML = " Reading score: ";

@@ -74,6 +74,7 @@ elseif(strpos($currController,"Admin.php") !== false)
             Route::run($currController);
         }
         else{
+            //print_r($_REQUEST);
             $controller->treat();
             //request is made from XHR 
             //TREAT THE REQUEST

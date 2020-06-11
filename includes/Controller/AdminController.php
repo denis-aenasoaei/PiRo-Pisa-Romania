@@ -14,14 +14,15 @@ class AdminController extends Controller{
             if($_REQUEST["table"] === "country_scores")
                 $this->model->deleteCountry($_REQUEST["country"]);
             elseif($_REQUEST["table"] === "Administrators")
-                $this->model->deleteCountry($_REQUEST["user"]);
+                $this->model->deleteUser($_REQUEST["user"]);
             elseif($_REQUEST["table"] === "romania_data")
-                $this->model->deleteCountry($_REQUEST["stud_id"]);
+                $this->model->deleteStudent($_REQUEST["stud_id"]);
         }
         elseif($_SERVER["REQUEST_METHOD"] === "POST")
         {
             if($_REQUEST["table"] === "country_scores")
-            {   $country=$_POST["country"];
+            {   
+                $country= $_POST["country"];
                 $read_mean =$_POST["read"];
                 $math_mean =$_POST["math"];
                 $science_mean =$_POST["science"];
@@ -31,37 +32,24 @@ class AdminController extends Controller{
                 } else {
                     // check if name only contains letters and whitespace
                     if (!preg_match("/^[a-zA-Z ]*$/",$country)) {
-                    $error[]= "Only letters and white space allowed";
+                        $error[]= "Only letters and white space allowed";
                     }
                 }
-                
-                if (empty($read_mean)) {
-                    $error[]="Read mean expected";
-                } else {
-                
-                    // check if is number
-                    if (!is_numeric($read_mean)) {
+                // check if is number
+                if (!is_numeric($read_mean)) {
                     $error[]= "Only numbers";
-                    }
-                }  
-                if (empty($math_mean)) {
-                    $error[]="Math mean expected";
-                } else {
-                
-                    // check if is number
-                    if (!is_numeric($math_mean)) {
+                }
+              
+                // check if is number
+                if (!is_numeric($math_mean)) {
                     $error[]= "Only numbers";
-                    }
-                }  
-                if (empty($science_mean)) {
-                    $error[]="Science mean expected";
-                } else {
-                
+                }
+                  
                     // check if is number
-                    if (!is_numeric($science_mean)) {
+                if (!is_numeric($science_mean)) {
                     $error[]= "Only numbers";
-                    }
-                } 
+                }
+                 
                 if ( count( $error ) == 0 ) {
                     $this->model->insertCountry($country,$read_mean,$math_mean,$science_mean);
                 } 
@@ -77,13 +65,14 @@ class AdminController extends Controller{
                 }
                 if (empty($password)) {
                     $err[]="Password expected";
+                }
                 if ( count( $err ) == 0 ) {
                     $this->model->insertUser($usern,$password);   
-                    } 
+                } 
             }
             elseif($_REQUEST["table"] === "romania_data")
             {
-                $studId=$_POST["stud_id"];
+                $studId= $_POST["stud_id"];
                 $readGrade=$_POST["read"];
                 $mathGrade =$_POST["math"];
                 $scienceGrade =$_POST["science"];
@@ -92,44 +81,84 @@ class AdminController extends Controller{
                 $age=$_POST["age"];
                 $wealth=$_POST["wealth_range"];
                 $error1=array();
-                if (empty($readGrade)) {
-                    $error1[]="Read mean expected";
-                } else {
-            
+                
                 // check if is number
                 if (!is_numeric($readGrade)) {
-                $error1[]= "Only numbers";
+                    $error1[]= "Only numbers";
                 }
-                }     
-                if (empty($mathGrade)) {
-                $error1[]="Math mean expected";
-                } else {
-            
+             
                 // check if is number
                 if (!is_numeric($mathGrade)) {
-                $error1[]= "Only numbers";
+                    $error1[]= "Only numbers";
                 }
-                }  
-                if (empty($scienceGrade)) {
-                $error1[]="Science mean expected";
-                } else {
+                  
             
                 // check if is number
                 if (!is_numeric($scienceGrade)) {
-                $error1[]= "Only numbers";
+                    $error1[]= "Only numbers";
                 }
-                } 
+                
                 if ( count( $error1 ) == 0 ) {
-               $this->model->insert($studId,$readGrade,$mathGrade,$scienceGrade,$gender,$schoolGrade,$age,$wealth);
+                    $this->model->insert($studId,$readGrade,$mathGrade,$scienceGrade,$gender,$schoolGrade,$age,$wealth);
                 } 
 
             }
 
         }
+        elseif($_SERVER["REQUEST_METHOD"] === "PUT")
+        {
+            if($_REQUEST["table"] === "romania_data")
+            {
+                $values = [];
+                if(isset($_REQUEST['stud_id']) && is_numeric($_REQUEST['stud_id'])) 
+                    $studId= (int) $_REQUEST['stud_id'];
+                else{
+                    $error1[]= "Invalid student ID";
+                }
+
+                if(isset($_REQUEST["read"]))
+                {
+                    if (!is_int($_REQUEST['read'])) {
+                        $error1[]= "Only numbers";
+                    }
+                    else{
+                        $values['read_grade']=(int)$_REQUEST["read"];
+                    }
+                }
+                if(isset($_REQUEST["math"]))
+                {
+                    
+                    if (!is_numeric($_REQUEST['math'])) {
+                        $error1[]= "Only numbers";
+                    }
+                    else{
+                        $values['math_grade'] =(int)$_REQUEST["math"];
+                    }
+                }
+                if(isset($_REQUEST["science"]))
+                {
+                    if (!is_numeric($_REQUEST['science'])) {
+                        $error1[]= "Only numbers";
+                    }
+                    else{
+                        $values['scie_grade'] =(int)$_REQUEST["science"];
+                    }
+                }
+    
+                $values['gender']=$_REQUEST["gender"];            
+                $values['school_grade']=$_REQUEST["school_grade"];
+                $values['age']=$_REQUEST["age"];
+                $values['wealth_range']=$_REQUEST["wealth_range"];
+                $error1=array();
+                
+                if ( count( $error1 ) == 0 ) {
+                    $this->model->updateStud($studId, $values);
+                } 
+
+            }
+        }
 
     }
-
-
 }
 
 ?>
