@@ -78,7 +78,7 @@ function sendRequest(){
         if (this.readyState == 4) {
             if(this.status == 200)
             {
-                console.log(xmlhttp.responseText);
+                alert("SUCCESS!");
             }
             else
             {
@@ -86,9 +86,11 @@ function sendRequest(){
             }
         }
     }
+    
 
-    xmlhttp.open(method, "http://127.0.0.1/PIRO-PISA-ROMANIA/Admin.php?".concat(queryString), true);
-    xmlhttp.send();
+    xmlhttp.open(method, "http://127.0.0.1/PIRO-PISA-ROMANIA/Admin.php", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send(queryString);
 
 }
 

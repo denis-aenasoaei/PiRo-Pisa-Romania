@@ -49,8 +49,8 @@ class AdminModel{
     public function insertUser($user,$passwd){ 
         $sql="INSERT into administrators (`user`,`password`) values(?,?) ";
         $request = $this->connection->prepare($sql);
-        $request->bindParam(1, $user);
-        $request->bindParam(2, password_hash($passwd, PASSWORD_DEFAULT));
+        $request->bindValue(1, $user);
+        $request->bindValue(2, password_hash($passwd, PASSWORD_DEFAULT));
         if(!$request->execute())
            return false;    
         return true;
@@ -123,7 +123,7 @@ class AdminModel{
         }
 
 
-        $request->bindParam($i, $id_stud1, PDO::PARAM_INT);
+        $request->bindParam($i, $idStud1, PDO::PARAM_INT);
 
 
         if(!$request->execute())

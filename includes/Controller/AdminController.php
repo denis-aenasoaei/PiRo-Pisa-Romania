@@ -12,11 +12,11 @@ class AdminController extends Controller{
         if($_SERVER["REQUEST_METHOD"] === "DELETE")
         {
             if($_REQUEST["table"] === "country_scores")
-                $this->model->deleteCountry($_REQUEST["country"]);
+                return $this->model->deleteCountry($_REQUEST["country"]);
             elseif($_REQUEST["table"] === "Administrators")
-                $this->model->deleteUser($_REQUEST["user"]);
+                return $this->model->deleteUser($_REQUEST["user"]);
             elseif($_REQUEST["table"] === "romania_data")
-                $this->model->deleteStudent($_REQUEST["stud_id"]);
+                return $this->model->deleteStudent($_REQUEST["stud_id"]);
         }
         elseif($_SERVER["REQUEST_METHOD"] === "POST")
         {
@@ -51,7 +51,7 @@ class AdminController extends Controller{
                 }
                  
                 if ( count( $error ) == 0 ) {
-                    $this->model->insertCountry($country,$read_mean,$math_mean,$science_mean);
+                    return $this->model->insertCountry($country,$read_mean,$math_mean,$science_mean);
                 } 
 
             }
@@ -67,7 +67,7 @@ class AdminController extends Controller{
                     $err[]="Password expected";
                 }
                 if ( count( $err ) == 0 ) {
-                    $this->model->insertUser($usern,$password);   
+                    return $this->model->insertUser($usern,$password);   
                 } 
             }
             elseif($_REQUEST["table"] === "romania_data")
@@ -99,7 +99,7 @@ class AdminController extends Controller{
                 }
                 
                 if ( count( $error1 ) == 0 ) {
-                    $this->model->insert($studId,$readGrade,$mathGrade,$scienceGrade,$gender,$schoolGrade,$age,$wealth);
+                    return $this->model->insert($studId,$readGrade,$mathGrade,$scienceGrade,$gender,$schoolGrade,$age,$wealth);
                 } 
 
             }
@@ -152,7 +152,7 @@ class AdminController extends Controller{
                 $error1=array();
                 
                 if ( count( $error1 ) == 0 ) {
-                    $this->model->updateStud($studId, $values);
+                    return $this->model->updateStud($studId, $values);
                 } 
 
             }
