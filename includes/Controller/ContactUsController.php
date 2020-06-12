@@ -15,31 +15,31 @@ class ContactUsController extends Controller{
     $email = $_POST["e-mail"];
     $selectOption = $_POST["city"];
     $subject = $_POST["subject"]; 
-    $errors = array();
+    $errors = "";
     if (empty($fname)) {
-        $errors[]="Firtsname is required";
+        $errors.="Firtsname is required";
     } else {
         // check if name only contains letters and whitespace
         if (!preg_match("/^[a-zA-Z ]*$/",$fname)) {
-        $errors[]= "Only letters and white space allowed";
+        $errors.= "Only letters and white space allowed";
         }
     }
     
     if (empty($lname)) {
-        $errors[]="Lastname is required";
+        $errors.="Lastname is required";
     } else {
     
         // check if name only contains letters and whitespace
         if (!preg_match("/^[a-zA-Z ]*$/",$lname)) {
-        $errors[]= "Only letters and white space allowed";
+        $errors.= "Only letters and white space allowed";
         }
     }  
     
     if (empty($email)) {
-        $errors[]="E-mail is required";
+        $errors.="E-mail is required";
     } else {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "Invalid email format";
+        $errors.= "Invalid email format";
         }
     }
         if (empty($subject)) {
@@ -50,6 +50,9 @@ class ContactUsController extends Controller{
 
     if ( count( $errors ) == 0 ) {
         $dataB=$this->model->insertContactInDb($fname,$lname,$email,$selectOption,$subject);
+    }else{
+        echo "<script type='text/javascript'>alert('$errors');</script>";
+        header("Refresh:0");
     }
     
 
