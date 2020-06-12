@@ -204,7 +204,7 @@ nav .nav-menu{
 }
 nav .nav-menu #navigation{
     display:grid;
-    padding:7px 0 0 0;
+    padding-top:7px;
     text-align: center;
     margin:0;
     list-style-type: none;

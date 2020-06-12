@@ -10,28 +10,30 @@ function deleteCookies(){
 function sendRequest(){
     const table = document.getElementById("table-name").options[document.getElementById("table-name").selectedIndex].value;
     let method = '';
-    
-    switch(document.getElementById("action-type").options[document.getElementById("action-type").selectedIndex].value){
+    let value=document.getElementById("action-type").options[document.getElementById("action-type").selectedIndex].value;
+    switch(value){
         case 'add':
             method='POST';
             break;
         case 'delete':
-            method = 'DELETE'
+            method = 'POST'
             break;
         case 'update':
-            method = 'PUT'
+            method = 'POST'
+            break;
+        case 'select':
+            method = 'POST'
             break;
     }
 
-    let queryString = "table=".concat(table).concat("&");
-
+    let queryString = "table=".concat(table).concat("&type=").concat(value).concat("&");
     if(table === "Administrators")
     {
-        if(method === 'DELETE')
+        if(value === 'delete')
         {
             queryString = queryString.concat("user=").concat(document.getElementById('input1').value).concat("&");
         }
-        else if(method === 'POST' || method=== 'PUT')
+        else
         {
             queryString = queryString.concat("user=").concat(document.getElementById('input1').value).concat("&pass=")
                         .concat(document.getElementById('input2').value);
@@ -39,32 +41,22 @@ function sendRequest(){
     }
     else if(table === 'country_scores'){
         queryString = queryString.concat("country=").concat(document.getElementById('input1').value);
-        if(method === 'DELETE')
+        if(value==='add' || value==='update' || value==='select')
         {
-            
-        }
-        else if(method === 'PUT' ||  method === 'POST')
-        {
-            if(document.getElementById("input2").value.length > 0)
-                queryString = queryString.concat("&read=").concat(document.getElementById("input2").value); 
-            if(document.getElementById("input3").value.length > 0)
-                queryString = queryString.concat("&math=").concat(document.getElementById("input3").value); 
-            if(document.getElementById("input4").value.length > 0)
-                 queryString = queryString.concat("&science=").concat(document.getElementById("input4").value); 
+            queryString = queryString.concat("&read=").concat(document.getElementById("input2").value);
+            queryString = queryString.concat("&math=").concat(document.getElementById("input3").value);
+            queryString = queryString.concat("&science=").concat(document.getElementById("input4").value);
         }
 
     }
     else if(table === 'romania_data'){
         queryString = queryString.concat("stud_id=").concat(document.getElementById('input1').value);
-        if(method === 'PUT' || method ==='POST')
+        if(value==='add' || value==='update' || value==='select')
         {
-            if(document.getElementById("input2").value.length > 0)
-                queryString = queryString.concat("&read=").concat(document.getElementById("input2").value); 
-            if(document.getElementById("input3").value.length > 0)
-                queryString = queryString.concat("&math=").concat(document.getElementById("input3").value); 
-            if(document.getElementById("input4").value.length > 0)
-                 queryString = queryString.concat("&science=").concat(document.getElementById("input4").value);
-            
+            queryString = queryString.concat("&read=").concat(document.getElementById("input2").value);
+            queryString = queryString.concat("&math=").concat(document.getElementById("input3").value);
+            queryString = queryString.concat("&science=").concat(document.getElementById("input4").value);
+
             queryString = queryString.concat("&gender=").concat(document.getElementById("input5").value);
             queryString = queryString.concat("&school_grade=").concat(document.getElementById("input6").value);
             queryString = queryString.concat("&age=").concat(document.getElementById("input7").value);
@@ -73,12 +65,15 @@ function sendRequest(){
         }
     }
 
+    console.log(queryString);
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4) {
             if(this.status == 200)
             {
-                alert("SUCCESS!");
+                //alert("SUCCESS!");
+                console.log(xmlhttp.responseText);
+                //console.log(JSON.parse(xmlhttp.responseText));
             }
             else
             {
@@ -86,8 +81,6 @@ function sendRequest(){
             }
         }
     }
-    
-
     xmlhttp.open(method, "http://127.0.0.1/PIRO-PISA-ROMANIA/Admin.php", true);
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send(queryString);
@@ -108,16 +101,21 @@ window.onload = function () {
     document.getElementById("action-type").addEventListener("change", function(){
         const action = document.getElementById("action-type");
         const table = document.getElementById("table-name").options[document.getElementById("table-name").selectedIndex].value;
-
-        if(action.options[action.selectedIndex].value === "add" || action.options[action.selectedIndex].value === "update"){
+        const value=action.options[action.selectedIndex].value;
+        if(value === "add" || value === "update" || value==="select"){
             if(table === "Administrators")
             {
                 document.getElementById("LB_input1").innerHTML = " Username: ";
                 document.getElementById("LB_input2").innerHTML = " Password: ";
-                document.getElementById("input2").type = "password";
-
-                document.getElementById("input2").classList.remove("hidden");
-                document.getElementById("LB_input2").classList.remove("hidden");
+                if(value==="select") {
+                    document.getElementById("input2").className += " hidden";
+                    document.getElementById("LB_input2").className += " hidden";
+                }
+                else {
+                    document.getElementById("input2").classList.remove("hidden");
+                    document.getElementById("LB_input2").classList.remove("hidden");
+                    document.getElementById("input2").type = "password";
+                }
 
                 document.getElementById("input3").className += " hidden";
                 document.getElementById("input4").className += " hidden";
@@ -215,6 +213,30 @@ window.onload = function () {
             {
                 document.getElementById("LB_input1").innerHTML = " Country: ";
             }
+        }
+        else if(action.options[action.selectedIndex].value === "select"){
+            document.getElementById("input1").className += " hidden";
+            document.getElementById("input2").className += " hidden";
+            document.getElementById("input3").className += " hidden";
+            document.getElementById("input4").className += " hidden";
+            document.getElementById("input5").className += " hidden";
+            document.getElementById("input6").className += " hidden";
+            document.getElementById("input7").className += " hidden";
+            document.getElementById("input8").className += " hidden";
+
+            document.getElementById("LB_input2").className += " hidden";
+            document.getElementById("LB_input3").className += " hidden";
+            document.getElementById("LB_input4").className += " hidden";
+            document.getElementById("LB_input5").className += " hidden";
+            document.getElementById("LB_input6").className += " hidden";
+            document.getElementById("LB_input7").className += " hidden";
+            document.getElementById("LB_input8").className += " hidden";
+
+
+            document.getElementById("input9").classList.remove("hidden");
+            document.getElementById("LB_input1").innerHTML = " Filter: ";
+
+
         }
         
     } );

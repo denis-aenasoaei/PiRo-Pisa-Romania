@@ -70,15 +70,12 @@ elseif(strpos($currController,"Admin.php") !== false)
     else
     {
         if($method === "GET")
-        {
             Route::run($currController);
-        }
         else{
-            
             if(!$controller->treat())
                 http_response_code(404);
-            
         }
+
 
     }
 }

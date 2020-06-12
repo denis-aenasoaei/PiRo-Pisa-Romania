@@ -9,19 +9,31 @@ class AdminController extends Controller{
 
     public function treat()
     {
-        if($_SERVER["REQUEST_METHOD"] === "DELETE")
+        if($_REQUEST["type"] === "delete")
         {
-            if($_REQUEST["table"] === "country_scores")
+            if($_REQUEST["table"] === "country_scores"){
+                if($_REQUEST["country"]==='')
+                    return false;
                 return $this->model->deleteCountry($_REQUEST["country"]);
-            elseif($_REQUEST["table"] === "Administrators")
+            }
+            elseif($_REQUEST["table"] === "Administrators"){
+                if($_REQUEST["user"]==='')
+                    return false;
                 return $this->model->deleteUser($_REQUEST["user"]);
-            elseif($_REQUEST["table"] === "romania_data")
+            }
+            elseif($_REQUEST["table"] === "romania_data"){
+                if($_REQUEST["stud_id"]==='')
+                    return false;
                 return $this->model->deleteStudent($_REQUEST["stud_id"]);
+            }
         }
-        elseif($_SERVER["REQUEST_METHOD"] === "POST")
+        elseif($_REQUEST["type"]==="select"){
+            return $this->model->selectTable($_REQUEST["table"],$_POST);
+        }
+        elseif($_REQUEST["type"] === "add")
         {
             if($_REQUEST["table"] === "country_scores")
-            {   
+            {
                 $country= $_POST["country"];
                 $read_mean =$_POST["read"];
                 $math_mean =$_POST["math"];
@@ -67,8 +79,8 @@ class AdminController extends Controller{
                     $err[]="Password expected";
                 }
                 if ( count( $err ) == 0 ) {
-                    return $this->model->insertUser($usern,$password);   
-                } 
+                    return $this->model->insertUser($usern,$password);
+                }
             }
             elseif($_REQUEST["table"] === "romania_data")
             {
@@ -82,30 +94,14 @@ class AdminController extends Controller{
                 $wealth=$_POST["wealth_range"];
                 $error1=array();
                 
-                // check if is number
-                if (!is_numeric($readGrade)) {
-                    $error1[]= "Only numbers";
-                }
-             
-                // check if is number
-                if (!is_numeric($mathGrade)) {
-                    $error1[]= "Only numbers";
-                }
-                  
-            
-                // check if is number
-                if (!is_numeric($scienceGrade)) {
-                    $error1[]= "Only numbers";
-                }
-                
-                if ( count( $error1 ) == 0 ) {
-                    return $this->model->insert($studId,$readGrade,$mathGrade,$scienceGrade,$gender,$schoolGrade,$age,$wealth);
-                } 
+                if($studId==='' || $readGrade==='' || $mathGrade==='' || $scienceGrade==='' || $gender==='' || $scienceGrade==='' || $age==='' || $wealth==='')
+                    return false;
+                return $this->model->insertStudent($studId,$readGrade,$mathGrade,$scienceGrade,$gender,$schoolGrade,$age,$wealth);
 
             }
 
         }
-        elseif($_SERVER["REQUEST_METHOD"] === "PUT")
+        elseif($_REQUEST["type"] === "update")
         {
             if($_REQUEST["table"] === "romania_data")
             {
@@ -156,8 +152,25 @@ class AdminController extends Controller{
                 } 
 
             }
+            elseif($_REQUEST["table"] === "Administrators"){
+                $user=$_REQUEST["user"];
+                $pass=$_REQUEST["pass"];
+                if($user==='')
+                    return false;
+                if($pass==='')
+                    return false;
+                return $this->model->updateUser($user,$pass);
+            }
+            elseif($_REQUEST["table"]==="country_scores"){
+                $read=$_REQUEST["read"];
+                $math=$_REQUEST["math"];
+                $science=$_REQUEST["science"];
+                $country=$_REQUEST["country"];
+                if($country==='')
+                    return false;
+                return $this->model->updateCountry($country,$read,$math,$science);
+            }
         }
-
     }
 }
 

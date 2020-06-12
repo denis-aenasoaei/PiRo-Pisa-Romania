@@ -53,6 +53,7 @@
                             <option value="add"> Add row </option>
                             <option value="update">Update a row </option>
                             <option value="delete">Delete a row </option>
+                            <option value="select">Select a row </option>
                         </select>
                     </form>
 
