@@ -1,5 +1,5 @@
-﻿body{
-    grid-template-rows: 40% 60%;
+﻿header{
+    grid-row: 1;
 }
 main {
     grid-row: 2;
