@@ -48,11 +48,12 @@ class ContactUsController extends Controller{
             $subject = $_POST["subject"];
             }
 
-    if ( count( $errors ) == 0 ) {
-        $dataB=$this->model->insertContactInDb($fname,$lname,$email,$selectOption,$subject);
-    }else{
+    if ( !empty($errors)) {
         echo "<script type='text/javascript'>alert('$errors');</script>";
-        header("Refresh:0");
+    }else{
+        $dataB=$this->model->insertContactInDb($fname,$lname,$email,$selectOption,$subject);
+        echo "<script type='text/javascript'>alert('Your datas were sent');</script>";
+        
     }
     
 
