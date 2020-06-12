@@ -139,8 +139,5 @@
             </div>
         </div>
 </main>
-    <footer>
-        <p>Sample footer text!</p>
-    </footer>
 </body>
 </html>
