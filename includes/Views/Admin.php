@@ -31,6 +31,7 @@
                 </div>
             </div>
         </nav>
+        </div>
     </header>
     <main>
         <h1 id="title">DASHBOARD</h1>

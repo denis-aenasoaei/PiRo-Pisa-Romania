@@ -170,6 +170,7 @@ class AdminController extends Controller{
                     return false;
                 return $this->model->updateCountry($country,$read,$math,$science);
             }
+            
         }
     }
 }

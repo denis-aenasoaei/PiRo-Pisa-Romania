@@ -235,8 +235,6 @@ window.onload = function () {
 
             document.getElementById("input9").classList.remove("hidden");
             document.getElementById("LB_input1").innerHTML = " Filter: ";
-
-
         }
         
     } );

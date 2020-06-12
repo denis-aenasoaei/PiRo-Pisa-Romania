@@ -134,7 +134,7 @@
                     
                 </div>
                 <div class="col2">
-                    <img src="Images/Home/download.jpg">
+                    <img src="Images/Home/download.jpg" alt="doctors">
                 </div>
             </div>
         </div>

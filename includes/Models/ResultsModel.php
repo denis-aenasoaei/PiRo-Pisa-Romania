@@ -9,6 +9,14 @@ class ResultsModel
         $this->connection = Database::getConnection();
     }
 
+    public function getAllCountries()
+    {
+        $sql = "Select Country from country_scores";
+        $req = $this->connection->prepare($sql);
+        $req->execute();
+        return $req->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     public function getArrayBasedOnFilters($desiredMean, $filters, $countries=[])
     {
         try{
