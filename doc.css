@@ -1,0 +1,18 @@
+body{
+    
+    padding:40px;
+    margin:50px;
+    border:50px;
+    border: 2px solid cadetblue ;
+    text-align: left;
+    border-radius: 30px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+p, ol {
+    text-align: left;
+    margin-left: 30px;
+    text-emphasis: none;
+  
+}
+
