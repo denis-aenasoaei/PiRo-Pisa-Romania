@@ -24,6 +24,11 @@ class ResultsController extends Controller
         echo '<pre>';
     }
 
+    public function getListOfCountries()
+    {
+        echo json_encode($this->model->getAllCountries(), JSON_FORCE_OBJECT);
+    }
+
     public function getFiltered()
     {    
         $countries = [];

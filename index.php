@@ -35,6 +35,10 @@ elseif(strpos($currController,"Results.php") !== false)
     {
         Route::run($currController);
     }
+    elseif(isset($_GET['allCountries']))
+    {
+        $controller->getListOfCountries();
+    }
     else
     {
         $controller->getFiltered();
@@ -58,6 +62,7 @@ elseif(strpos($currController,"Login.php") !== false)
     {
         $controller->Login();
     }
+    session_start();
     Route::run($currController);
 }
 elseif(strpos($currController,"Admin.php") !== false)
@@ -70,7 +75,9 @@ elseif(strpos($currController,"Admin.php") !== false)
     else
     {
         if($method === "GET")
+        {
             Route::run($currController);
+        }
         else{
             if(!$controller->treat())
                 http_response_code(404);
