@@ -3,7 +3,7 @@ let addCountriesList= [];
 
 
 let chartType = 'bar';
-let numberOfCountries = 1;
+let numberOfCountries = 0;
 let means = [];
 let countries = [];
 
@@ -82,6 +82,103 @@ function checkIfRomaniaAndGetData(){
     }
     getDataAndCreateChart();
 
+}
+
+function updateChart(){
+    document.getElementById("chart").remove(); 
+    div = document.querySelector("#chart-container");
+    div.insertAdjacentHTML("afterbegin", "<canvas id='chart'></canvas>");
+    const ctx = document.getElementById("chart").getContext('2d');
+    let graphData = {};
+    if(chartType == 'bar')
+    { 
+        graphData={
+        type: chartType,
+        data: {
+            labels: countries,
+            datasets: [{
+                data: means,
+                backgroundColor: backgroundChartColors,
+                borderColor: borderChartColors,
+                borderWidth: 1
+            }]
+
+        },
+        options:{
+            legend:{
+                display:false
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    }
+    data=graphData;
+    graphData.options.responsive=false;
+    }
+    else if(chartType == 'points')
+    {
+        graphData={
+            type: 'line',
+            data: {
+                labels: ['',"PisaTestResults",''],
+                datasets: []
+            },
+            options:{
+                legend:{
+                    display:true
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min:0,
+                            max:600
+                        }
+                    }]
+                }
+            }
+        }
+        for(let i=0;i<means.length;i++)
+        {
+            graphData.data.datasets.push({
+                label: countries[i],
+                data: [null,means[i], null],
+                borderColor:borderChartColors[i],
+                borderWidth:10
+            })
+        }
+    }
+    else if(chartType == 'polarArea')
+    {
+        graphData = {
+            type:'polarArea',
+            data: {
+                labels: countries,
+                datasets:[{
+                    data:means,
+                    backgroundColor:backgroundChartColors,
+                    borderColor: borderChartColors
+                }]
+            },
+            options:{
+                scale:{
+                    ticks: {
+                        min:300,
+                        max:580
+                    }
+                }
+            }
+        }
+    }
+       
+
+    graphData.options.responsive=false;
+    data=graphData;
+    const chart = new Chart(ctx, graphData);
 }
 
 
@@ -171,12 +268,10 @@ function getDataAndCreateChart(){
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("chart").remove(); 
-        div = document.querySelector("#chart-container");
         document.getElementById("exportPNG").style.display="inline";
         document.getElementById("exportCSV").style.display="inline";
         document.getElementById("exportSVG").style.display="inline";
-        div.insertAdjacentHTML("afterbegin", "<canvas id='chart'></canvas>");
+        
         let scores = JSON.parse(this.responseText);
         countries = [];
         means = [];
@@ -185,97 +280,7 @@ function getDataAndCreateChart(){
             means.push(scores[i]["MEAN"]);
             countries.push(scores[i]["Country"]);
         }
-        const ctx = document.getElementById("chart").getContext('2d');
-        let graphData = {};
-        if(chartType == 'bar')
-        { 
-            graphData={
-            type: chartType,
-            data: {
-                labels: countries,
-                datasets: [{
-                    data: means,
-                    backgroundColor: backgroundChartColors,
-                    borderColor: borderChartColors,
-                    borderWidth: 1
-                }]
-
-            },
-            options:{
-                legend:{
-                    display:false
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        }
-        data=graphData;
-        graphData.options.responsive=false;
-        }
-        else if(chartType == 'points')
-        {
-            graphData={
-                type: 'line',
-                data: {
-                    labels: "PisaTestResults",
-                    datasets: []
-                },
-                options:{
-                    legend:{
-                        display:true
-                    },
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                min:0,
-                                max:600
-                            }
-                        }]
-                    }
-                }
-            }
-            for(let i=0;i<means.length;i++)
-            {
-                graphData.data.datasets.push({
-                    label: countries[i],
-                    data: [null, null, null, null,null, null, null, means[i]],
-                    borderColor:borderChartColors[i],
-                    borderWidth:10
-                })
-            }
-        }
-        else if(chartType == 'polarArea')
-        {
-            graphData = {
-                type:'polarArea',
-                data: {
-                    labels: countries,
-                    datasets:[{
-                        data:means,
-                        backgroundColor:backgroundChartColors,
-                        borderColor: borderChartColors
-                    }]
-                },
-                options:{
-                    scale:{
-                        ticks: {
-                            min:300,
-                            max:580
-                        }
-                    }
-                }
-            }
-        }
-           
-
-        graphData.options.responsive=false;
-        data=graphData;
-        const chart = new Chart(ctx, graphData);
+        updateChart();
 
     }
     }
@@ -286,36 +291,18 @@ function getDataAndCreateChart(){
 
 window.onload = function ()
 {
-    //get the list of all countries from the db
-    let xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        
-        const r_countries = JSON.parse(this.responseText);
-        
-        for(let i of Object.keys(r_countries))
-        {
-            addCountriesList[i]="<option value=\"".concat(r_countries[i]["Country"]).concat("\">").concat(r_countries[i]["Country"]).concat("</option>");        
-        }
-        
-        }
-    }
-
-    xmlhttp.open("GET", "http://127.0.0.1/PIRO-PISA-ROMANIA/Results.php?allCountries=1", true);
-    xmlhttp.send();
-        
 
     document.getElementById("button-barchart").addEventListener("click", function(){
         chartType="bar";
-        getDataAndCreateChart();
+        updateChart();
     });
     document.getElementById("button-point").addEventListener("click", function(){
         chartType="points";
-        getDataAndCreateChart();
+        updateChart();
     });
     document.getElementById("button-polar").addEventListener("click", function(){
         chartType="polarArea";
-        getDataAndCreateChart();
+        updateChart();
     });
     document.getElementById("exportPNG").addEventListener("click", function(){
         download("PNG");
@@ -336,7 +323,7 @@ window.onload = function ()
             "<select id=\"c".concat(numberOfCountries).concat("\" name=\"c").concat(numberOfCountries).concat("\">").concat(addCountriesList.join('')).concat("</select>")
             );
             document.getElementById("c".concat(numberOfCountries)).addEventListener("change", checkIfRomaniaAndGetData);
-            
+
             checkIfRomaniaAndGetData();
         }
     });
@@ -347,18 +334,38 @@ window.onload = function ()
             const countriesForm = document.getElementById("country-choice");
             countriesForm.lastChild.removeEventListener("change", checkIfRomaniaAndGetData);
             countriesForm.lastChild.remove();
+            checkIfRomaniaAndGetData();
         }
     });
     
     document.getElementById("indicator-combo-box").addEventListener("change", getDataAndCreateChart);
     document.getElementById("gender-combo-box").addEventListener("change", getDataAndCreateChart);
     document.getElementById("wealth-combo-box").addEventListener("change", this.getDataAndCreateChart);
-    document.getElementById("c1").addEventListener("change", this.checkIfRomaniaAndGetData);
     document.getElementById("grade_9").addEventListener('change', getDataAndCreateChart);
     document.getElementById("grade_10").addEventListener('change', getDataAndCreateChart);
     document.getElementById("age_15").addEventListener('change', getDataAndCreateChart);
     document.getElementById("age_16").addEventListener('change', getDataAndCreateChart);
 
-    this.checkIfRomaniaAndGetData();
+    //get the list of all countries from the db
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        
+        const r_countries = JSON.parse(this.responseText);
+        
+        for(let i of Object.keys(r_countries))
+        {
+            addCountriesList[i]="<option value=\"".concat(r_countries[i]["Country"]).concat("\">").concat(r_countries[i]["Country"]).concat("</option>");        
+        }
+
+        document.getElementById("btn-add-country").click();
+        
+        }
+    }
+
+    xmlhttp.open("GET", "http://127.0.0.1/PIRO-PISA-ROMANIA/Results.php?allCountries=1", true);
+    xmlhttp.send();
+    
+
 
 }

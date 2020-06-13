@@ -1,0 +1,133 @@
+﻿
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../StyleSheets/doc.css">
+
+    <title>HTML Elements Reference</title>
+</head>
+<body>
+    <header>
+        <h1>PiRo (Pisa 2018 Romanian Results Visualizer)</h1>
+        <div role="contentinfo">
+            <section typeof="sa:AuthorsList">
+                <h2>Autori</h2>
+                <ul>
+                    <li typeof="sa:ContributorRole" property="schema:author">
+                        <span typeof="schema:Person">
+                            <meta property="schema:givenName" content="Denis">
+                            <meta property="schema:additionalName" content="Claudiu">
+                            <meta property="schema:familyName" content="Aenasoaei">
+                            <span property="schema:name">Denis Claudiu Aenasoaei</span>
+                        </span>
+                    </li>
+                    <li typeof="sa:ContributorRole" property="schema:author">
+                        <span typeof="schema:Person">
+                            <meta property="schema:givenName" content="Corina">
+                            <meta property="schema:additionalName" content="Elena">
+                            <meta property="schema:familyName" content="Bogos(cas.Iftinca)">
+                            <span property="schema:name">Corina Elena Bogos(cas.Iftinca)</span>
+                        </span>
+                    </li>
+                    <li typeof="sa:ContributorRole" property="schema:author">
+                        <span typeof="schema:Person">
+                            <meta property="schema:givenName" content="Ionut">
+                            <meta property="schema:additionalName" content="Gabriel">
+                            <meta property="schema:familyName" content="Manolache">
+                            <span property="schema:name">Ionut Gabriel Manolache</span>
+                        </span>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </header>
+    <section>
+    <h2>Enuntul problemei:</h2>
+    <p>"Pe baza unui API REST/GraphQL propriu, sa se implementeze o aplicatie Web de vizualizare flexibila a datelor referitoare la rezultatele obtinute de elevii romani la testul Pisa 2018. Statisticile si vizualizarile generate – minim 3 maniere – vor putea fi exportate in formatele CSV, PNG si SVG. Sistemul va oferi suport si pentru cautarea/filtrarea multi-criteriala a datelor, inclusiv comparatii cu alte tari – a se utiliza Education Statistics."</p>
+    </section>
+    <section>
+        <h2>Tehnologii folosite</h2>
+        <p>Tehnologiile folosite pentru realizarea interfetei:</p>
+        <ol>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>Ajax</li>
+            <li>Chart.js</li>
+        </ol>
+       
+    </section>
+    <section>
+        <h2>
+            Descrierea aplicatiei
+        </h2>
+        <p>Aplicatia este formata din:</p>
+        <ul>
+            <li>
+                4 pagini publice:
+                <ol>
+                    <li>Login-pentru accesarea paginii Admin</li>
+                    <li>Home</li>
+                    <li>Contact</li>
+                    <li>Results</li>
+                </ol>
+            </li>
+           
+                <li>O pagina dedicata administrarii datelor:Admin</li>
+            
+        </ul>
+        <figure>
+            <img class="imagine" src="imgTW.jpg" alt="first">
+            <figcaption>Fig.1 Arhitectura aplicatiei</figcaption>
+        </figure>
+    </section>
+    <section>
+        <h2>Impartirea taskurilor</h2>
+        <p>
+            Taskurile s-au impartit in modul urmator:
+            <ul>
+                <li>
+                    Denis Claudiu Aenasoaei
+                    <ol>
+                        <li>Pagina Results(HTML+CSS)</li>
+                        <li>Pagina Admin(HTML+CSS)</li>
+                        <li>Crearea filtrelor pentru realizarea graficelor</li>
+                        <li>Trimiterea de cereri pentru obtinerea de date,folosind suita ajax</li>
+                        <li>Realizarea chart-ului polar-area</li>
+                        <li>Functia de trimitere a cererilor,pe baza parametrilor din UI pentru pagina Admin</li>
+                    </ol>
+                </li>
+                <li>
+                    Corina Elena Bogos(cas.Iftinca)
+                    <ol>
+                        <li>Pagina Login(HTML+CSS)</li>
+                        <li>Pagina Contact(HTML+CSS)</li>
+                        <li>Bar Chart</li>
+                        <li>Exportarea datelor in format CSV</li>
+
+                    </ol>
+                </li>
+                <li>
+                    Ionut Gabriel Manolache
+                    <ol>
+                        <li>Pagina Home(HTML+CSS)</li>
+                        <li>Template(HTML+CSS)</li>
+                        <li>Point Chart</li>
+                        <li>Exportarea datelor in format SVG,PNG</li>
+                        <li>Login cu </li>
+                        <li>Afisarea informatiilor din baza de date in UI, pentru pagina Admin</li>
+
+                    </ol>
+                </li>
+            </ul>
+    </section>
+    <section>
+        <h2>Sistemul de management al codului sursa</h2>
+        <p>
+                    Am ales Github si am lucrat pe un singur branch inca de la inceput.
+                </p>
+            
+    </section>
+</body>
+</html>
