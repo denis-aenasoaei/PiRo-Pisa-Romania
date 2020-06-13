@@ -40,7 +40,10 @@ class AdminController extends Controller{
                 "age"=> isset($_POST["age"]) && $_POST["age"]!=="ALL" ? $_POST["age"] : "",
                 "wealth_range"=> isset($_POST["wealth_range"]) && $_POST["wealth_range"]!=="ALL" ? $_POST["wealth_range"] : ""
             ];
-
+            if (preg_match('/[^A-Za-z0-9]/', $filters["user"]) || preg_match('/[^A-Za-z]/', $filters["country"]) ||
+                preg_match('/[^0-9]/', $filters["math"])  || preg_match('/[^0-9]/', $filters["read"]) ||
+                preg_match('/[^0-9]/', $filters["science"]) || preg_match('/[^A-Za-z0-9]/', $filters["stud_id"]))
+                return false;
             return $this->model->selectTable($_REQUEST["table"],$filters);
         }
         elseif($_REQUEST["type"] === "add")
