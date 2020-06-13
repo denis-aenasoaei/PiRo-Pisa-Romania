@@ -22,68 +22,73 @@ function __autoload($class){
 
 $currController = Route::getUsedRoute($_GET['url']);
 $method = $_SERVER['REQUEST_METHOD'];
-if(strpos($currController,"index.php") !== false )
-{
-    $controller = new IndexController();
-    Route::run($currController);
-    //parse request
-}
-elseif(strpos($currController,"Results.php") !== false)
-{
-    $controller = new ResultsController();
-    if(count($_GET) == 1)
-    {
+try{
+        if(strpos($currController,"index.php") !== false )
+        {
+        $controller = new IndexController();
         Route::run($currController);
-    }
-    elseif(isset($_GET['allCountries']))
-    {
-        $controller->getListOfCountries();
-    }
-    else
-    {
-        $controller->getFiltered();
-    }
-
-
-}
-elseif(strpos($currController,"Contact.php") !== false)
-{
-    $controller = new ContactUsController();
-    if($method === "POST")
-    {
-        $controller->insertComment();
-    }
-    Route::run($currController);
-}
-elseif(strpos($currController,"Login.php") !== false)
-{
-    $controller = new LoginController();
-    if($method === "POST")
-    {
-        $controller->Login();
-    }
-    session_start();
-    Route::run($currController);
-}
-elseif(strpos($currController,"Admin.php") !== false)
-{
-    $controller = new AdminController();
-    if(!isset($_COOKIE["user"]) or !isset($_COOKIE["uuid"]))
-    {
-        header("location:Login.php");
-    }
-    else
-    {
-        if($method === "GET")
+        //parse request
+        }
+        elseif(strpos($currController,"Results.php") !== false)
+        {
+        $controller = new ResultsController();
+        if(count($_GET) == 1)
         {
             Route::run($currController);
         }
-        else{
-            if(!$controller->treat())
-                http_response_code(404);
+        elseif(isset($_GET['allCountries']))
+        {
+            $controller->getListOfCountries();
+        }
+        else
+        {
+            $controller->getFiltered();
         }
 
 
+        }
+        elseif(strpos($currController,"Contact.php") !== false)
+        {
+        $controller = new ContactUsController();
+        if($method === "POST")
+        {
+            $controller->insertComment();
+        }
+        Route::run($currController);
+        }
+        elseif(strpos($currController,"Login.php") !== false)
+        {
+        $controller = new LoginController();
+        if($method === "POST")
+        {
+            $controller->Login();
+        }
+        session_start();
+        Route::run($currController);
+        }
+        elseif(strpos($currController,"Admin.php") !== false)
+        {
+        $controller = new AdminController();
+        if(!isset($_COOKIE["user"]) or !isset($_COOKIE["uuid"]))
+        {
+            header("location:Login.php");
+        }
+        else
+        {
+            if($method === "GET")
+            {
+                Route::run($currController);
+            }
+            else{
+                if(!$controller->treat())
+                    http_response_code(404);
+            }
+
+        }
     }
 }
+catch(PDOException $e){
+    http_response_code(404); 
+}   
+
 ?>

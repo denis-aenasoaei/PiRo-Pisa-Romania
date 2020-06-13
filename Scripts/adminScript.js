@@ -56,9 +56,7 @@ function sendRequest(){
         if (this.readyState == 4) {
             if(this.status == 200)
             {
-                //alert("SUCCESS!");
-                //.log(xmlhttp.responseText);
-                //console.log(JSON.parse(xmlhttp.responseText));
+                alert("SUCCESS!");
             }
             else
             {
