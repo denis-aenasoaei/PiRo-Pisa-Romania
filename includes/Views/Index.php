@@ -206,7 +206,7 @@
         </main>
         <footer>
             <hr>
-            <p><a>@ 2020</a></p>
+            <p><a href="http://127.0.0.1/PiRo-Pisa-Romania/Login.php">@ 2020</a></p>
             <p><a href="http://127.0.0.1/PiRo-Pisa-Romania/Documentation/Documentatie_front.html">Documentatie front-end </a></p>
             <p><a href="http://127.0.0.1/PiRo-Pisa-Romania/Documentation/Documentatie_back-end.html">Documentatie back-end </a></p>
         </footer>
