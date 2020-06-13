@@ -73,9 +73,11 @@ function sendRequest(){
 }
 
 function putData(){
-    let json
-    if(select_data==="")
+    let json;
+    if(Object.keys(select_data).length<1) {
+        alert("No data was selected");
         return false;
+    }
     else
         json=select_data;
     let table = document.getElementById("select-data");
