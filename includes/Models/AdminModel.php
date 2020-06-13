@@ -183,14 +183,6 @@ class AdminModel{
                     $sql=$sql."country='".$country."'";
                     $set=1;
                 }
-                if($read_mean!==''){
-                    if($set==1)
-                        $sql=$sql." and read_mean=".$read_mean;
-                    else{
-                        $sql=$sql."read_mean=".$read_mean;
-                        $set=1;
-                    }
-                }
                 if($math_mean!==''){
                     if($set==1)
                         $sql=$sql." and math_mean=".$math_mean;
@@ -199,11 +191,19 @@ class AdminModel{
                         $set=1;
                     }
                 }
+                if($read_mean!==''){
+                    if($set==1)
+                        $sql=$sql." and read_mean=".$read_mean;
+                    else{
+                        $sql=$sql."read_mean=".$read_mean;
+                        $set=1;
+                    }
+                }
                 if($science_mean!==''){
                     if($set==1)
-                        $sql=$sql." and science_mean=".$science_mean;
+                        $sql=$sql." and scie_mean=".$science_mean;
                     else{
-                        $sql=$sql."science_mean=".$science_mean;
+                        $sql=$sql."scie_mean=".$science_mean;
                         $set=1;
                     }
                 }
@@ -244,13 +244,13 @@ class AdminModel{
                 }
                 if($scienceGrade!==''){
                     if($set==1)
-                        $sql=$sql." and science_grade=".$scienceGrade;
+                        $sql=$sql." and scie_grade=".$scienceGrade;
                     else{
-                        $sql=$sql."science_grade=".$scienceGrade;
+                        $sql=$sql."scie_grade=".$scienceGrade;
                         $set=1;
                     }
                 }
-                if($gender!==''){
+                if($gender!=='' && $gender!=="ALL"){
                     if($set==1)
                         $sql=$sql." and gender=".$gender;
                     else{
@@ -258,7 +258,7 @@ class AdminModel{
                         $set=1;
                     }
                 }
-                if($schoolGrade!==''){
+                if($schoolGrade!=='' && $schoolGrade!=="ALL"){
                     if($set==1)
                         $sql=$sql." and school_grade=".$schoolGrade;
                     else{
@@ -266,7 +266,7 @@ class AdminModel{
                         $set=1;
                     }
                 }
-                if($age!==''){
+                if($age!=='' && $age!=="ALL"){
                     if($set==1)
                         $sql=$sql." and age=".$age;
                     else{
@@ -274,7 +274,7 @@ class AdminModel{
                         $set=1;
                     }
                 }
-                if($wealth!==''){
+                if($wealth!=='' && $wealth!=="ALL"){
                     if($set==1)
                         $sql=$sql." and wealth_range='".$wealth."'";
                     else{
@@ -285,8 +285,8 @@ class AdminModel{
             }
         }
         else if($table==="Administrators"){
-            $usern=$filterArray["user"];
-            if($usern!==''){
+            if($filterArray["user"]!==''){
+                $usern=$filterArray["user"];
                 $sql=$sql." where ";
                 if($usern!==''){
                     $sql=$sql."user='".$usern."'";

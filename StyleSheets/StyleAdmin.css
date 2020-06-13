@@ -31,6 +31,9 @@ main {
     size:auto;
     
 }
+main >*{
+    font-family: Arial, Helvetica, sans-serif;
+}
 main p {
     font-size: 1.2em;
     font-weight: bold;
@@ -51,6 +54,9 @@ main p {
     width: 65%;
     border-radius: 2em;
     padding: 0.3em;
+}
+.active{
+    background-color:rgb(150,150,150);
 }
 
 .loginButton:hover {
@@ -93,4 +99,10 @@ main p {
 
 .hidden {
     display:none;
+}
+#select-data{
+    margin: auto;
+}
+#select-data >*{
+    text-align: left;
 }

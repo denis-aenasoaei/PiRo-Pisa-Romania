@@ -28,7 +28,20 @@ class AdminController extends Controller{
             }
         }
         elseif($_REQUEST["type"]==="select"){
-            return $this->model->selectTable($_REQUEST["table"],$_POST);
+            $filters = [
+                "user"=> isset($_POST["user"]) ? $_POST["user"] : "",
+                "country"=> isset($_POST["country"]) ? $_POST["country"] : "",
+                "math"=> isset($_POST["math"]) ? $_POST["math"] : "",
+                "read"=> isset($_POST["read"]) ? $_POST["read"] : "",
+                "science"=> isset($_POST["science"]) ? $_POST["science"] : "",
+                "stud_id"=> isset($_POST["stud_id"]) ? $_POST["stud_id"] : "",
+                "gender"=> isset($_POST["gender"]) && $_POST["gender"]!=="ALL" ? $_POST["gender"] : "",
+                "school_grade"=> isset($_POST["school_grade"]) && $_POST["school_grade"]!=="ALL" ? $_POST["school_grade"] : "",
+                "age"=> isset($_POST["age"]) && $_POST["age"]!=="ALL" ? $_POST["age"] : "",
+                "wealth_range"=> isset($_POST["wealth_range"]) && $_POST["wealth_range"]!=="ALL" ? $_POST["wealth_range"] : ""
+            ];
+
+            return $this->model->selectTable($_REQUEST["table"],$filters);
         }
         elseif($_REQUEST["type"] === "add")
         {

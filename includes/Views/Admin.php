@@ -36,9 +36,8 @@
     <main>
         <h1 id="title">DASHBOARD</h1>
         <div class="admin-navigation">  
-            <button id="modify-table-data" class="admin-nav-button"> Modify table data </button>
-            <button id="placeholder1" class="admin-nav-button"> placeholder </button>
-            <button id="placeholder2" class="admin-nav-button"> placeholder </button> 
+            <button id="modify-table-data" class="admin-nav-button active"> Modify table data </button>
+            <button id="select-table-data" class="admin-nav-button"> Select table data </button>
         </div>
         <div class="admin-actions">
             <div class="modify-table">
@@ -54,7 +53,6 @@
                             <option value="add"> Add row </option>
                             <option value="update">Update a row </option>
                             <option value="delete">Delete a row </option>
-                            <option value="select">Select a row </option>
                         </select>
                     </form>
 
@@ -89,14 +87,71 @@
                             <option value="HIGH"> High </option>
                         </select>
                     </form>
+
                 
                 <button id="btn-submit"> Submit modifications </button>
             </div>
-            <div class="doElse hidden">
-                <p> PLACEHOLDER, WILL BE REPLACED BY FUNCTIONALITY </p>
-            </div>
-            <div class="doElseElse hidden">
-                <p> PLACEHOLDER, WILL BE REPLACED BY ANOTHER NEW FUNCTIONALITY </p>
+            <div class="select-table hidden">
+                <form id="table-pick">
+                    <label for="table-form"> Table Name: </label>
+                    <select name="table-form" id="table-form">
+                        <option value="Administrators"> Administrators </option>
+                        <option value="romania_data"> Data from romania </option>
+                        <option value="country_scores"> Data from other countries </option>
+                    </select>
+                </form>
+
+                <form id="select-filters" action="" onsubmit="">
+                    <label for="box_in1" id="label_in1" class=""> Username: </label>
+                    <input type="text" name="input1" id="box_in1" class="">
+
+                    <label for="box_in2" class="hidden" id="label_in2">  </label>
+                    <input type="text" name="box_in2" class="hidden" id="box_in2">
+
+                    <label for="box_in3" class="hidden" id="label_in3">  </label>
+                    <input type="text" name="box_in3" class="hidden" id="box_in3">
+
+                    <label for="box_in4" class="hidden" id="label_in4">  </label>
+                    <input type="text" name="box_in4" class="hidden" id="box_in4">
+
+                    <label for="box_in5" class="hidden" id="label_in5"> Gender: </label>
+                    <select name="box_in5" class="hidden" id="box_in5">
+                        <option value="ALL"> All</option>
+                        <option value="1"> Female </option>
+                        <option value="2"> Male </option>
+                    </select>
+
+                    <label for="box_in6" class="hidden" id="label_in6"> School Grade: </label>
+                    <select name="box_in6" class="hidden" id="box_in6">
+                        <option value="ALL"> All</option>
+                        <option value="9"> Grade 9 </option>
+                        <option value="10"> Grade 10 </option>
+                        <option value="11"> Grade 11 </option>
+                    </select>
+
+                    <label for="box_in7" class="hidden" id="label_in7"> Age: </label>
+                    <select name="box_in7" class="hidden" id="box_in7">
+                        <option value="ALL"> All</option>
+                        <option value="15"> 15 </option>
+                        <option value="16"> 16 </option>
+                    </select>
+
+                    <label for="box_in8" class="hidden" id="label_in8"> Wealth Range: </label>
+                    <select name="box_in8" class="hidden" id="box_in8">
+                        <option value="ALL"> All</option>
+                        <option value="LOW"> Low </option>
+                        <option value="MEDIUM"> Medium </option>
+                        <option value="HIGH"> High </option>
+                    </select>
+
+                </form>
+
+                <button id="button_select"> Select </button>
+                <table id="select-data" class="hidden"> </table>
+                <form id="pages" class="hidden">
+                    <label for="page" id="label_page">Page:</label>
+                    <input name="page" type="number" min="1" max="1" value="1" step="1" id="box_page">
+                </form>
             </div>
                 
         </div>
